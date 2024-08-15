@@ -11,18 +11,29 @@ namespace LectorCodigoQR
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (FUImagen.HasFile)
+            {
+                btnBorrarImagen.Visible = true;
+            }
             //MVCodigo.SetActiveView(VCodigo);
         }
 
         protected void lkLeerCodigo_Click(object sender, EventArgs e)
         {
-            MVCodigo.SetActiveView(VCodigo);
+            MVCodigo.SetActiveView(VLeerCodigo);
+            lkGenerarCodigo.Visible = false;
+            lkLeerCodigo.Visible = false;
+            lblOpcion.Visible = false;
         }
 
         protected void lkGenerarCodigo_Click(object sender, EventArgs e)
         {
-
+            MVCodigo.SetActiveView(VGenerarCodigo);
+            lkGenerarCodigo.Visible = false;
+            lkLeerCodigo.Visible = false;
+            lblOpcion.Visible = false;
         }
+
+
     }
 }

@@ -1,0 +1,45 @@
+﻿body {
+    margin: 0;
+    padding: 80px;
+    background-color: #fff;
+}
+
+.picture {
+    opacity: 0.75;
+    height: 250px;
+    width: 250px;
+    position: relative;
+    overflow: hidden;
+    background-color: lightgray;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: solid 1px;
+    margin-bottom: 15px;
+}
+
+.file-uploader {
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.upload-icon {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #ccc;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #bbb;
+}
+
+.picture:hover .upload-icon {
+    opacity: 1;
+}
