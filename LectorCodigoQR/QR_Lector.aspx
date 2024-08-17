@@ -1,9 +1,45 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="QR_Lector.aspx.cs" Inherits="LectorCodigoQR.QR_Lector" %>
 
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    <link href="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js" rel="Stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link href="Content/styles.css" rel="stylesheet" />
+
+    <script>
+        function BtnConsultar(sttexto) {
+            Swal.fire({
+                icon: 'success',
+                html: sttexto
+            })
+        }
+
+        function BtnInfo(sttexto) {
+            Swal.fire({
+                icon: 'info',
+                html: sttexto
+            })
+        }
+
+        function BtnError(sttexto) {
+            Swal.fire({
+                icon: 'error',
+                html: sttexto
+            })
+        }
+    </script>
+
 
     <div align="center">
         <asp:Label ID="lblTitulo" Text="Lector de Códigos QR Online" Font-Size="23" runat="server" /><br />
@@ -39,12 +75,26 @@
                                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                     </h1>
 
-                                    <asp:FileUpload ID="FUImagen" CssClass="file-uploader" runat="server" />
+                                    <asp:FileUpload ID="FUImagen" CssClass="file-uploader" runat="server" accept=".png,.jpg,.jpeg,.svg" />
+                                    <img id="imgPreview" src="#" alt="Previsualización" style="display:none; width: 100%; height: 100%; object-fit: cover;" />
 
                                 </div>
 
-                                <asp:Button ID="btnSubirImagen" CssClass="btn btn-success btn-sm" Text="Subir Imagen" runat="server" Width="20%" />
-                                <asp:Button ID="btnBorrarImagen" CssClass="btn btn-danger btn-sm" Text="Eliminar" runat="server" Width="20%" Visible="false" />
+                                
+                                    
+                                        <div class="">
+                                            <asp:Label ID="lblUrl" Text="" runat="server" CssClass="align-self-center" />
+                                        </div>
+                                    
+                                
+
+                                <div class="button-container">
+
+                                    <asp:Button ID="btnCargarImagen" CssClass="btn btn-success btn-sm"  Text="Cargar Código" OnClick="btnCargarImagen_Click" runat="server" Width="20%" style="display: none;" />
+                                    <asp:Button ID="btnBorrarImagen" CssClass="btn btn-danger btn-sm" Text="Eliminar" runat="server" Width="20%" style="display: none;" />
+
+                                </div>
+
 
                             </div>
                         </div>
@@ -75,5 +125,48 @@
         </asp:MultiView>
     </div>
 
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var fileUpload = document.getElementById('<%= FUImagen.ClientID %>');
+            var imgPreview = document.getElementById('imgPreview');
+
+            fileUpload.addEventListener('change', function () {
+                var file = fileUpload.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        imgPreview.src = e.target.result;
+                        imgPreview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    imgPreview.style.display = 'none';
+                }
+            });
+        });
+
+        window.onload = function () {
+            var fileUpload = document.getElementById('<%= FUImagen.ClientID %>');
+            var deleteButton = document.getElementById('<%= btnBorrarImagen.ClientID %>');
+            var uploadButton = document.getElementById('<%= btnCargarImagen.ClientID %>');
+
+            if (fileUpload && deleteButton && uploadButton) {
+                fileUpload.addEventListener('change', function () {
+                    if (fileUpload.value !== "") {
+                        deleteButton.style.display = 'block';
+                        uploadButton.style.display = 'block';
+                    } else {
+                        deleteButton.style.display = 'none';
+                        uploadButton.style.display = 'none';
+                    }
+                });
+            } else {
+                console.error('El elemento FileUpload o el botón de eliminar no se encontraron.');
+            }
+        };
+    </script>
 
 </asp:Content>
+
+

@@ -87,13 +87,22 @@ namespace LectorCodigoQR
         protected global::System.Web.UI.WebControls.FileUpload FUImagen;
 
         /// <summary>
-        /// Control btnSubirImagen.
+        /// Control lblUrl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubirImagen;
+        protected global::System.Web.UI.WebControls.Label lblUrl;
+
+        /// <summary>
+        /// Control btnCargarImagen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCargarImagen;
 
         /// <summary>
         /// Control btnBorrarImagen.
