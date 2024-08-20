@@ -38,6 +38,31 @@
                 html: sttexto
             })
         }
+
+        function ModalCopied(sttexto) {
+            Swal.fire({
+                title: "¡Copiado!",
+                icon: 'success',
+                html: sttexto,
+                timer: 2000,
+                timerProgressBar: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
     </script>
 
 
@@ -53,17 +78,18 @@
 
         <asp:LinkButton ID="lkLeerCodigo" class="btn btn-primary btn-lg" OnClick="lkLeerCodigo_Click" runat="server"><i class="fa fa-file-image-o"></i>&nbsp;Leer Código QR</asp:LinkButton>
         <asp:LinkButton ID="lkGenerarCodigo" class="btn btn-primary btn-lg" OnClick="lkGenerarCodigo_Click" runat="server"><i class="fa fa-qrcode"></i>&nbsp;Generar Código QR</asp:LinkButton>
-        
+
     </div>
 
-    
+
     <div class="row">
         <asp:MultiView ID="MVCodigo" runat="server">
             <asp:View ID="VLeerCodigo" runat="server">
 
 
                 <div class="panel panel-primary">
-                    <div class="panel-heading d-flex">Leer Código QR
+                    <div class="panel-heading d-flex">
+                        Leer Código QR
                         <asp:LinkButton ID="lkVolverLeer" CssClass="btn btn-info btn-xs pull-right" OnClick="lkVolverLeer_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
                     </div>
 
@@ -80,27 +106,27 @@
                                     </h1>
 
                                     <asp:FileUpload ID="FUImagen" CssClass="file-uploader" runat="server" accept=".png,.jpg,.jpeg,.svg" />
-                                    <img id="imgPreview" src="#" alt="Previsualización" style="display:none; width: 100%; height: 100%; object-fit: cover;" />
+                                    <img id="imgPreview" src="#" alt="Previsualización" style="display: none; width: 100%; height: 100%; object-fit: cover;" />
 
                                 </div>
 
-                                
-                                    
-                                        
-                                            <div class="input-group">
-                                                <asp:TextBox ID="txtUrl" CssClass="form-control" runat="server" Visible="false" />
-                                                <span class="input-group-btn">
-                                                    <asp:LinkButton ID="lkCopiarUrl" CssClass="btn btn-default" OnClientClick="CopyToClipboard()" runat="server" Visible="false"><i class="fa fa-clone" aria-hidden="true"></i></asp:LinkButton>
-                                                </span>
-                                            </div>
-                                        
-                                    
-                                
+
+
+
+                                <div class="input-group">
+                                    <asp:TextBox ID="txtUrl" CssClass="form-control" runat="server" Visible="false" />
+                                    <span class="input-group-btn">
+                                        <asp:LinkButton ID="lkCopiarUrl" CssClass="btn btn-default" OnClick="lkCopiarUrl_Click" OnClientClick="CopyToClipboard()" runat="server" Visible="false"><i class="fa fa-clone" aria-hidden="true" id="copyIcon" style="color: green;"></i></asp:LinkButton>
+                                    </span>
+                                </div>
+
+
+
 
                                 <div class="button-container">
 
-                                    <asp:Button ID="btnCargarImagen" CssClass="btn btn-success btn-sm"  Text="Cargar Código" OnClick="btnCargarImagen_Click" runat="server" Width="20%" style="display: none;" />
-                                    <asp:Button ID="btnBorrarImagen" CssClass="btn btn-danger btn-sm" Text="Eliminar" runat="server" Width="20%" style="display: none;" />
+                                    <asp:Button ID="btnCargarImagen" CssClass="btn btn-success btn-sm" Text="Cargar Código" OnClick="btnCargarImagen_Click" runat="server" Width="20%" Style="display: none;" />
+                                    <asp:Button ID="btnBorrarImagen" CssClass="btn btn-danger btn-sm" Text="Eliminar" runat="server" Width="20%" Style="display: none;" />
 
                                 </div>
 
@@ -116,7 +142,8 @@
             <asp:View ID="VGenerarCodigo" runat="server">
 
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Generar Código QR
+                    <div class="panel-heading">
+                        Generar Código QR
                         <asp:LinkButton ID="lkVolverGenerar" CssClass="btn btn-info btn-xs pull-right" OnClick="lkVolverGenerar_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
                     </div>
                     <div align="center">
@@ -125,9 +152,9 @@
 
                                 <asp:Label ID="lblOpcionGenerar" Text="¿Qué tipo de código desea generar?" runat="server" />
 
-                             </div>
-                         </div>
-                     </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </asp:View>
@@ -135,6 +162,7 @@
 
         </asp:MultiView>
     </div>
+
 
     <script>
 
@@ -181,16 +209,6 @@
             var copyText = $('[id$="txtUrl"]').val(); // txt_Output is the id of your textbox to copy from. Could refactor this to pass as a parameter as well if desired.
 
             navigator.clipboard.writeText(copyText)
-                .then(() => {
-                    var icon = document.getElementById('copyIcon');
-                    icon.classList.remove('fa-clone');
-                    icon.classList.add('fa-check');
-                    setTimeout(() => {
-                        icon.classList.remove('fa-check');
-                        icon.classList.add('fa-clone');
-                    }, 2000); // Cambia el icono de vuelta después de 2 segundos
-                    alert('Copied to clipboard.');
-                })
                 .catch((error) => {
                     alert(`Copy failed. Error: ${error}`);
                 });

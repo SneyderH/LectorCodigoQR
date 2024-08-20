@@ -17,7 +17,7 @@ namespace LectorCodigoQR
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //MVCodigo.SetActiveView(VCodigo);
+            MaintainScrollPositionOnPostBack = true;
         }
 
         protected void lkLeerCodigo_Click(object sender, EventArgs e)
@@ -107,6 +107,11 @@ namespace LectorCodigoQR
             lblOpcion.Visible = true;
             lkGenerarCodigo.Visible = true;
             lkLeerCodigo.Visible = true;
+        }
+
+        protected void lkCopiarUrl_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, Page.GetType(), "popupScript", "ModalCopied();", true);
         }
     }
 }
