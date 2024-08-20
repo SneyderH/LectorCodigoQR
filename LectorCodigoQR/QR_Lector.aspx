@@ -63,7 +63,11 @@
 
 
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Leer Código QR</div>
+                    <div class="panel-heading d-flex">Leer Código QR
+                        <asp:LinkButton ID="lkVolverLeer" CssClass="btn btn-info btn-xs pull-right" OnClick="lkVolverLeer_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
+                    </div>
+
+
                     <div align="center">
                         <div style="margin: 5px;">
                             <div style="margin: 2.5px">
@@ -82,9 +86,14 @@
 
                                 
                                     
-                                        <div class="">
-                                            <asp:Label ID="lblUrl" Text="" runat="server" CssClass="align-self-center" />
-                                        </div>
+                                        
+                                            <div class="input-group">
+                                                <asp:TextBox ID="txtUrl" CssClass="form-control" runat="server" Visible="false" />
+                                                <span class="input-group-btn">
+                                                    <asp:LinkButton ID="lkCopiarUrl" CssClass="btn btn-default" OnClientClick="CopyToClipboard()" runat="server" Visible="false"><i class="fa fa-clone" aria-hidden="true"></i></asp:LinkButton>
+                                                </span>
+                                            </div>
+                                        
                                     
                                 
 
@@ -107,12 +116,14 @@
             <asp:View ID="VGenerarCodigo" runat="server">
 
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Generar Código QR</div>
+                    <div class="panel-heading">Generar Código QR
+                        <asp:LinkButton ID="lkVolverGenerar" CssClass="btn btn-info btn-xs pull-right" OnClick="lkVolverGenerar_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
+                    </div>
                     <div align="center">
                         <div style="margin: 5px;">
                             <div style="margin: 2.5px">
 
-
+                                <asp:Label ID="lblOpcionGenerar" Text="¿Qué tipo de código desea generar?" runat="server" />
 
                              </div>
                          </div>
@@ -165,6 +176,25 @@
                 console.error('El elemento FileUpload o el botón de eliminar no se encontraron.');
             }
         };
+
+        function CopyToClipboard() {
+            var copyText = $('[id$="txtUrl"]').val(); // txt_Output is the id of your textbox to copy from. Could refactor this to pass as a parameter as well if desired.
+
+            navigator.clipboard.writeText(copyText)
+                .then(() => {
+                    var icon = document.getElementById('copyIcon');
+                    icon.classList.remove('fa-clone');
+                    icon.classList.add('fa-check');
+                    setTimeout(() => {
+                        icon.classList.remove('fa-check');
+                        icon.classList.add('fa-clone');
+                    }, 2000); // Cambia el icono de vuelta después de 2 segundos
+                    alert('Copied to clipboard.');
+                })
+                .catch((error) => {
+                    alert(`Copy failed. Error: ${error}`);
+                });
+        }
     </script>
 
 </asp:Content>

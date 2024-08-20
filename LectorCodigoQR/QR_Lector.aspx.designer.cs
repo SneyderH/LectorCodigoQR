@@ -69,6 +69,15 @@ namespace LectorCodigoQR
         protected global::System.Web.UI.WebControls.View VLeerCodigo;
 
         /// <summary>
+        /// Control lkVolverLeer.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkVolverLeer;
+
+        /// <summary>
         /// Control lblSeleccion.
         /// </summary>
         /// <remarks>
@@ -87,13 +96,22 @@ namespace LectorCodigoQR
         protected global::System.Web.UI.WebControls.FileUpload FUImagen;
 
         /// <summary>
-        /// Control lblUrl.
+        /// Control txtUrl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUrl;
+        protected global::System.Web.UI.WebControls.TextBox txtUrl;
+
+        /// <summary>
+        /// Control lkCopiarUrl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkCopiarUrl;
 
         /// <summary>
         /// Control btnCargarImagen.
@@ -121,5 +139,23 @@ namespace LectorCodigoQR
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View VGenerarCodigo;
+
+        /// <summary>
+        /// Control lkVolverGenerar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkVolverGenerar;
+
+        /// <summary>
+        /// Control lblOpcionGenerar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOpcionGenerar;
     }
 }

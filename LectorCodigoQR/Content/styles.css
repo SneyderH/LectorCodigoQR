@@ -64,3 +64,20 @@
     height: 100%;
     object-fit: cover; /* Asegura que la imagen ocupe todo el espacio sin distorsionarse */
 }
+
+.input-group .form-control {
+    width: calc(100% - 40px); /* Ajusta el ancho del TextBox */
+    display: inline-block;
+}
+
+.input-group-btn {
+    display: inline-block;
+    vertical-align: top;
+}
+
+    .input-group-btn .btn {
+        margin-left: -1px; /* Elimina cualquier margen entre los elementos */
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-radius: 20px;
+    }
