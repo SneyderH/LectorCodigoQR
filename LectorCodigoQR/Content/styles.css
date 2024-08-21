@@ -1,8 +1,145 @@
-﻿body {
+﻿/*body {
     margin: 0;
     padding: 80px;
     background-color: #fff;
+}*/
+
+* {
+    margin: 0;
+    padding: 0;
 }
+
+/*body {
+    background-image: linear-gradient(135deg, #f58e8e, #f26969, #ef4444, #e11313, #a90f0f, #710a0a);
+    background-size: 500%;
+    animation: fanimado 5s infinite;
+}*/
+
+body{
+    color: white;
+    background: #202731;
+}
+
+section{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 400px;
+    padding: 100px 20vw;
+    border-radius: 200px;
+}
+
+.lightred {
+    background: #445368;
+}
+
+.red {
+    background: #f26969;
+}
+
+.text {
+    color: white;
+    text-align: center;
+    margin: 250px 0;
+    font-size: 100px;
+    font-family: "Anton", sans-serif;
+}
+
+.subtitle {
+    color: white;
+    font-size: 50px;
+    font-family: "Anton", sans-serif;
+}
+
+.button-option {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px 150px;
+}
+
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+
+.btn1, .btn2 {
+    display: block;
+    width: 230px;
+}
+
+.btn1 {
+    float: left;
+    margin-bottom: 100px;
+}
+
+.btn2 {
+    background: rgb(255,151,0);
+    border: none;
+    z-index: 1;
+}
+
+    .btn2:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 0;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        border-radius: 5px;
+        background-color: #eaf818;
+        background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
+        box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5);
+        7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+        transition: all 0.3s ease;
+    }
+
+    .btn2:hover {
+        color: #000;
+    }
+
+        .btn2:hover:after {
+            top: auto;
+            bottom: 0;
+            height: 100%;
+        }
+
+    .btn2:active {
+        top: 2px;
+    }
+
+.option:hover {
+    color: aquamarine;
+    transition: 0.5s ease-in;
+}
+
+/*@keyframes fanimado {
+    0%{
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}*/
 
 .picture {
     opacity: 0.75;
@@ -14,7 +151,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border: solid 1px;
+    border: solid 5px;
     margin-bottom: 15px;
 }
 
@@ -75,9 +212,13 @@
     vertical-align: top;
 }
 
-    .input-group-btn .btn {
-        margin-left: -1px; /* Elimina cualquier margen entre los elementos */
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-radius: 20px;
-    }
+.input-group-btn .btn {
+    margin-left: -1px; /* Elimina cualquier margen entre los elementos */
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-radius: 20px;
+}
+
+/*FONDO ANIMADO*/
+
+

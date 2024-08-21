@@ -65,21 +65,22 @@
         }
     </script>
 
+        <div class="text">
+            <asp:Label ID="lblTitulo" Text="Lector de Códigos QR Online" runat="server" /><br />
+        </div>
 
-    <div align="center">
-        <asp:Label ID="lblTitulo" Text="Lector de Códigos QR Online" Font-Size="23" runat="server" /><br />
-    </div>
+    <section class="lightred">
+        <div class="subtitle">
+            <asp:Label ID="lblOpcion" CssClass="option" Text="¿Qué deseas realizar?" runat="server" />
+        </div>
 
-    <div class="col-lg-1">
-        <asp:Label ID="lblOpcion" Text="¿Qué deseas realizar?" runat="server" />
-    </div>
+        <div class="button-option">
 
-    <div class="col-md-4">
+            <asp:LinkButton ID="lkLeerCodigo" class="btn btn-primary btn-lg custom-btn btn2 btn1" OnClick="lkLeerCodigo_Click" runat="server"><i class="fa fa-file-image-o"></i>&nbsp;Leer Código QR</asp:LinkButton>
+            <asp:LinkButton ID="lkGenerarCodigo" class="btn btn-primary btn-lg custom-btn btn2" OnClick="lkGenerarCodigo_Click" runat="server"><i class="fa fa-qrcode"></i>&nbsp;Generar Código QR</asp:LinkButton>
 
-        <asp:LinkButton ID="lkLeerCodigo" class="btn btn-primary btn-lg" OnClick="lkLeerCodigo_Click" runat="server"><i class="fa fa-file-image-o"></i>&nbsp;Leer Código QR</asp:LinkButton>
-        <asp:LinkButton ID="lkGenerarCodigo" class="btn btn-primary btn-lg" OnClick="lkGenerarCodigo_Click" runat="server"><i class="fa fa-qrcode"></i>&nbsp;Generar Código QR</asp:LinkButton>
-
-    </div>
+        </div>
+    </section>
 
 
     <div class="row">
