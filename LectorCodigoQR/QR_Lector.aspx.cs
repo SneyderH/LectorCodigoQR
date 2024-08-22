@@ -24,19 +24,12 @@ namespace LectorCodigoQR
         {
             MVCodigo.SetActiveView(VLeerCodigo);
             MVCodigo.Visible = true;
-            lkGenerarCodigo.Visible = false;
-            lkLeerCodigo.Visible = false;
-            lblOpcion.Visible = false;
-            txtUrl.Text = string.Empty;
         }
 
         protected void lkGenerarCodigo_Click(object sender, EventArgs e)
         {
             MVCodigo.SetActiveView(VGenerarCodigo);
             MVCodigo.Visible = true;
-            lkGenerarCodigo.Visible = false;
-            lkLeerCodigo.Visible = false;
-            lblOpcion.Visible = false;
             txtUrl.Text = string.Empty;
         }
 

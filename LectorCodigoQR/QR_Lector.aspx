@@ -65,9 +65,21 @@
         }
     </script>
 
+    <div class="animation-area">
         <div class="text">
-            <asp:Label ID="lblTitulo" Text="Lector de Códigos QR Online" runat="server" /><br />
+            <asp:Label ID="lblTitulo" CssClass="title" Text="Lector de Códigos QR Online" runat="server" /><br />
         </div>
+
+        <ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
 
     <section class="lightred">
         <div class="subtitle">
@@ -83,59 +95,51 @@
     </section>
 
 
-    <div class="row">
+    <div class="container-content">
         <asp:MultiView ID="MVCodigo" runat="server">
             <asp:View ID="VLeerCodigo" runat="server">
 
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading d-flex">
-                        Leer Código QR
-                        <asp:LinkButton ID="lkVolverLeer" CssClass="btn btn-info btn-xs pull-right" OnClick="lkVolverLeer_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
-                    </div>
+                <div class="back-button">
+                    <asp:LinkButton ID="lkVolverLeer" CssClass="btn btn-info custom-btn" OnClick="lkVolverLeer_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
+                </div>
 
+                    <asp:label id="lblSeleccion" cssclass="selection-text" text="Selecciona el Código QR" runat="server" font-size="23" />
 
-                    <div align="center">
-                        <div style="margin: 5px;">
-                            <div style="margin: 2.5px">
+                    <div class="content-qr">
+                        <div class="picture">
+                            <h1 class="upload-icon">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </h1>
 
-                                <asp:Label ID="lblSeleccion" Text="Selecciona el código QR" runat="server" Font-Size="23" />
+                            <asp:FileUpload ID="FUImagen" CssClass="file-uploader" runat="server" accept=".png,.jpg,.jpeg,.svg" />
+                            <img id="imgPreview" src="#" alt="Previsualización" style="display: none; width: 100%; height: 100%; object-fit: cover;" />
 
-                                <div class="picture">
-                                    <h1 class="upload-icon">
-                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                    </h1>
+                        </div>
 
-                                    <asp:FileUpload ID="FUImagen" CssClass="file-uploader" runat="server" accept=".png,.jpg,.jpeg,.svg" />
-                                    <img id="imgPreview" src="#" alt="Previsualización" style="display: none; width: 100%; height: 100%; object-fit: cover;" />
+                        
+                        <div class="button-image">
+                            <asp:Button ID="btnCargarImagen" CssClass="btn btn-success" Text="Cargar Código" OnClick="btnCargarImagen_Click" runat="server" Width="20%" Style="display: none;" />
 
-                                </div>
+                            <asp:Button ID="btnBorrarImagen" CssClass="btn btn-danger" Text="Eliminar" runat="server" Width="20%" Style="display: none;" />
+                        </div>
 
-
-
-
-                                <div class="input-group">
-                                    <asp:TextBox ID="txtUrl" CssClass="form-control" runat="server" Visible="false" />
-                                    <span class="input-group-btn">
-                                        <asp:LinkButton ID="lkCopiarUrl" CssClass="btn btn-default" OnClick="lkCopiarUrl_Click" OnClientClick="CopyToClipboard()" runat="server" Visible="false"><i class="fa fa-clone" aria-hidden="true" id="copyIcon" style="color: green;"></i></asp:LinkButton>
-                                    </span>
-                                </div>
-
-
-
-
-                                <div class="button-container">
-
-                                    <asp:Button ID="btnCargarImagen" CssClass="btn btn-success btn-sm" Text="Cargar Código" OnClick="btnCargarImagen_Click" runat="server" Width="20%" Style="display: none;" />
-                                    <asp:Button ID="btnBorrarImagen" CssClass="btn btn-danger btn-sm" Text="Eliminar" runat="server" Width="20%" Style="display: none;" />
-
-                                </div>
-
-
-                            </div>
+                        <div class="input-group">
+                            <asp:TextBox ID="txtUrl" CssClass="form-control" runat="server" Visible="false" />
+                            <span class="input-group-btn">
+                                <asp:LinkButton ID="lkCopiarUrl" CssClass="btn btn-default" OnClick="lkCopiarUrl_Click" OnClientClick="CopyToClipboard()" runat="server" Visible="false"><i class="fa fa-clone" aria-hidden="true" id="copyIcon" style="color: green;"></i></asp:LinkButton>
+                            </span>
                         </div>
                     </div>
-                </div>
+
+
+
+
+
+
+
+
+                    
 
             </asp:View>
 
@@ -215,6 +219,8 @@
                 });
         }
     </script>
+
+    <script src="Content/styles.css" type="text/javascript"></script>
 
 </asp:Content>
 
