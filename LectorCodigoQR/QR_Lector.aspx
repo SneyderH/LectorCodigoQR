@@ -119,16 +119,18 @@
 
                         
                         <div class="button-image">
-                            <asp:Button ID="btnCargarImagen" CssClass="btn btn-success" Text="Cargar Código" OnClick="btnCargarImagen_Click" runat="server" Width="20%" Style="display: none;" />
+                            <asp:Button ID="btnCargarImagen" CssClass="btn custom-btn btn-color-read" Text="Cargar Código" OnClick="btnCargarImagen_Click" runat="server" Style="display: none;" />
 
-                            <asp:Button ID="btnBorrarImagen" CssClass="btn btn-danger" Text="Eliminar" runat="server" Width="20%" Style="display: none;" />
+                            <asp:Button ID="btnBorrarImagen" CssClass="btn custom-btn btn-color-delete" Text="Eliminar" runat="server" Style="display: none;" />
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-group position-grid">
+                            
                             <asp:TextBox ID="txtUrl" CssClass="form-control" runat="server" Visible="false" />
                             <span class="input-group-btn">
                                 <asp:LinkButton ID="lkCopiarUrl" CssClass="btn btn-default" OnClick="lkCopiarUrl_Click" OnClientClick="CopyToClipboard()" runat="server" Visible="false"><i class="fa fa-clone" aria-hidden="true" id="copyIcon" style="color: green;"></i></asp:LinkButton>
                             </span>
+
                         </div>
                     </div>
 

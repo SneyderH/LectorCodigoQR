@@ -15,9 +15,9 @@
     animation: fanimado 5s infinite;
 }*/
 
-body{
+body {
     color: white;
-    background: #202731;
+    background: #222831;
 }
 
 section{
@@ -32,7 +32,10 @@ section{
 }
 
 .lightred {
-    background: #445368;
+    background: #31363F;
+    -webkit-box-shadow: inset 5px 1px 76px 5px rgba(118,171,174,1);
+    -moz-box-shadow: inset 5px 1px 76px 5px rgba(118,171,174,1);
+    box-shadow: inset 5px 1px 76px 5px rgba(118,171,174,1);
 }
 
 .red {
@@ -236,7 +239,7 @@ section{
 }
 
 .container-content {
-    background-color: #445368;
+    background-color: #76ABAE;
     border-radius: 50px;
     margin-top: 200px;
 }
@@ -251,7 +254,7 @@ section{
 
 .content-qr {
     display: grid;
-    grid-template-columns: 50% 25% 25%;
+    grid-template-columns: 40% 20% 40%;
 }
 
 .selection-text {
@@ -259,17 +262,15 @@ section{
     margin-left: 77px;
     font-family: "Anton", sans-serif;
 }
-/*@keyframes fanimado {
-    0%{
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}*/
+
+.btn-color-read {
+    background-color: limegreen;
+}
+
+.btn-color-delete {
+    background-color: red;
+}
+
 .picture {
     opacity: 0.75;
     height: 250px;
@@ -281,7 +282,7 @@ section{
     background-repeat: no-repeat;
     background-size: cover;
     border: solid 5px;
-    margin-bottom: 15px;
+    margin-bottom: 50px;
     margin-left: 100px;
 }
 
@@ -317,19 +318,21 @@ section{
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que la imagen ocupe todo el espacio sin distorsionarse */
+    object-fit: cover;
 }
 
 .button-image {
     width: 100%;
     display: flex;
     gap: 10px;
-    margin-left: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
 }
 
 .input-group .form-control {
-    width: calc(100% - 40px); /* Ajusta el ancho del TextBox */
+    width: calc(100% - 40px);
     display: inline-block;
 }
 
@@ -339,12 +342,15 @@ section{
 }
 
 .input-group-btn .btn {
-    margin-left: -1px; /* Elimina cualquier margen entre los elementos */
+    margin-left: -1px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-radius: 20px;
 }
 
-/*FONDO ANIMADO*/
-
+.position-grid {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+}
 
