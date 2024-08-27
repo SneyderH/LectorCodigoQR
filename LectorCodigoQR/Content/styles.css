@@ -51,6 +51,7 @@ section{
 }
 
 
+
 .title {
     background: #222 -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
     -webkit-background-size: 150px;
@@ -354,3 +355,29 @@ section{
     margin-bottom: 60px;
 }
 
+
+/*GENERATE QR CODE*/
+
+.menu-opctions ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid;
+    border-top-width: 0px;
+    margin-top: 30px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.btn-reset {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+
+.content-generate-panel {
+    display: flex;
+}

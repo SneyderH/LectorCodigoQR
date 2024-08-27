@@ -4,6 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -120,6 +121,7 @@
                         
                         <div class="button-image">
                             <asp:Button ID="btnCargarImagen" CssClass="btn custom-btn btn-color-read" Text="Cargar Código" OnClick="btnCargarImagen_Click" runat="server" Style="display: none;" />
+                            <%--SHOW ARROW TO INPUT--%>
 
                             <asp:Button ID="btnBorrarImagen" CssClass="btn custom-btn btn-color-delete" Text="Eliminar" runat="server" Style="display: none;" />
                         </div>
@@ -148,20 +150,56 @@
 
             <asp:View ID="VGenerarCodigo" runat="server">
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        Generar Código QR
-                        <asp:LinkButton ID="lkVolverGenerar" CssClass="btn btn-info btn-xs pull-right" OnClick="lkVolverGenerar_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
+                    <div class="back-button">
+                        <asp:LinkButton ID="lkVolverGenerar" CssClass="btn btn-info custom-btn" OnClick="lkVolverGenerar_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
                     </div>
-                    <div align="center">
-                        <div style="margin: 5px;">
-                            <div style="margin: 2.5px">
 
-                                <asp:Label ID="lblOpcionGenerar" Text="¿Qué tipo de código desea generar?" runat="server" />
+                    <div class="menu-opctions">
+                        <ul>
+                            <li>
+                                <div class="btn" onclick="<%=btnUrlGenerate.ClientID %>.click()">
+                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                    <asp:Button ID="btnUrlGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="URL" runat="server" OnClick="btnUrlGenerate_Click" />
+                                </div>
+                            </li>
 
+                            <li>
+                                <div class="btn" onclick="<%=btnWhatsAppGenerate.ClientID %>.click()">
+                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    <asp:Button ID="btnWhatsAppGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="WHATSAPP" runat="server" OnClick="btnWhatsAppGenerate_Click" />
+                                </div>
+                            </li>
+
+                            <li>SMS</li>
+                            <li>TELÉFONO</li>
+                            <li>TEXTO</li>
+                        </ul>
+                    </div>
+                <div class="content-qr">
+
+                    <div class="content-generate-panel">
+                        <asp:Panel ID="pnlUrl" runat="server" Visible="false">
+                            <h1>GENERAR QR POR URL</h1>
+
+                            <div>
+                                <asp:TextBox ID="txtGenerarUrl" runat="server" ForeColor="Black" />
+                                <asp:Button ID="btnGenerarQR" Text="Generar" OnClick="btnGenerarQR_Click" runat="server" />
                             </div>
-                        </div>
+
+                            <div>
+                                <asp:Image ID="imgQRGenerado" ImageUrl="imageurl" runat="server" />
+                                <asp:PlaceHolder ID="phQRGenerado" runat="server" />
+                                <asp:Button ID="btnDescargarQR" Text="Descargar" OnClick="btnDescargarQR_Click" runat="server" Visible="true" />
+                            </div>
+
+                        </asp:Panel>
+
+
+                        <asp:Panel ID="pnlWhatsApp" runat="server" Visible="false">
+                            <h1>GENERAR QR POR WHATSAPP</h1>
+                        </asp:Panel>
                     </div>
+
                 </div>
 
             </asp:View>

@@ -1,15 +1,10 @@
 ﻿using Svg;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Web;
+using System.Drawing;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Windows;
 using ZXing;
-using ZXing.Common;
+using System.Drawing.Imaging;
 
 namespace LectorCodigoQR
 {
@@ -106,5 +101,65 @@ namespace LectorCodigoQR
         {
             ScriptManager.RegisterStartupScript(this, Page.GetType(), "popupScript", "ModalCopied();", true);
         }
+
+        protected void btnUrlGenerate_Click(object sender, EventArgs e)
+        {
+            pnlUrl.Visible = true;
+            pnlWhatsApp.Visible = false;
+        }
+
+        protected void btnWhatsAppGenerate_Click(object sender, EventArgs e)
+        {
+            pnlWhatsApp.Visible = true;
+            pnlUrl.Visible = false;
+        }
+
+        protected void btnGenerarQR_Click(object sender, EventArgs e)
+        {
+            GenerarQR(txtGenerarUrl.Text);
+        }
+
+        protected void btnDescargarQR_Click(object sender, EventArgs e)
+        {
+            DescargarQR();
+        }
+
+        #region MÉTODOS
+        private void GenerarQR(string name)
+        {
+            var writer = new BarcodeWriter();
+            writer.Format = BarcodeFormat.QR_CODE;
+            writer.Options = new ZXing.Common.EncodingOptions { Width=200, Height=200 };
+            var result = writer.Write(name);
+            string path = Server.MapPath("~/images/QRImage.png");
+            var barcodeBitmap = new Bitmap(result);
+
+            using (MemoryStream memory = new MemoryStream())
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    barcodeBitmap.Save(memory, ImageFormat.Png);
+                    byte[] bytes = memory.ToArray();
+                    fs.Write(bytes, 0, bytes.Length);
+                }
+            }
+
+            imgQRGenerado.Visible = true;
+            imgQRGenerado.ImageUrl = "~/images/QRImage.png";
+
+        }
+
+        private void DescargarQR()
+        {
+            string fileName = "QRImage.png";
+            string filePath = Server.MapPath(string.Format("~/images/{0}", fileName));
+            Response.ContentType = "application/png";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+
+            Response.WriteFile(filePath);
+            Response.Flush();
+            Response.End();
+        }
+        #endregion
     }
 }
