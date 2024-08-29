@@ -361,7 +361,7 @@ section{
 .menu-opctions ul {
     display: flex;
     list-style: none;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     border: 1px solid;
     border-top-width: 0px;
@@ -381,3 +381,9 @@ section{
 .content-generate-panel {
     display: flex;
 }
+
+.btn-active:hover:active {
+    width: 100px;
+    background-color: red;
+}
+

@@ -168,6 +168,33 @@ namespace LectorCodigoQR
         protected global::System.Web.UI.WebControls.Button btnWhatsAppGenerate;
 
         /// <summary>
+        /// Control btnSMSGenerate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSMSGenerate;
+
+        /// <summary>
+        /// Control btnTelefonoGenerate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTelefonoGenerate;
+
+        /// <summary>
+        /// Control btnTextoGenerate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTextoGenerate;
+
+        /// <summary>
         /// Control pnlUrl.
         /// </summary>
         /// <remarks>

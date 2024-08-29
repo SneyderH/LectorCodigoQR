@@ -157,23 +157,41 @@
                     <div class="menu-opctions">
                         <ul>
                             <li>
-                                <div class="btn" onclick="<%=btnUrlGenerate.ClientID %>.click()">
+                                <div class="btn btn-active" onclick="<%=btnUrlGenerate.ClientID %>.click()">
                                     <i class="fa fa-link" aria-hidden="true"></i>
                                     <asp:Button ID="btnUrlGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="URL" runat="server" OnClick="btnUrlGenerate_Click" />
                                 </div>
                             </li>
 
                             <li>
-                                <div class="btn" onclick="<%=btnWhatsAppGenerate.ClientID %>.click()">
+                                <div class="btn btn-active" onclick="<%=btnWhatsAppGenerate.ClientID %>.click()">
                                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
                                     <asp:Button ID="btnWhatsAppGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="WHATSAPP" runat="server" OnClick="btnWhatsAppGenerate_Click" />
                                 </div>
                             </li>
+                                
+                            <li>
+                                <div class="btn btn-active" onclick="<%=btnSMSGenerate.ClientID %>.click()">
+                                    <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                    <asp:Button ID="btnSMSGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="SMS" runat="server" />
+                                </div>
+                            </li>
 
-                            <li>SMS</li>
-                            <li>TELÉFONO</li>
-                            <li>TEXTO</li>
+                            <li>
+                                <div class="btn btn-active" onclick="<%=btnTelefonoGenerate.ClientID %>.click()">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <asp:Button ID="btnTelefonoGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="TELÉFONO" runat="server" />
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="btn btn-active" onclick="<%=btnTextoGenerate.ClientID %>.click()">
+                                    <i class="fa fa-align-justify" aria-hidden="true"></i>
+                                    <asp:Button ID="btnTextoGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="TEXTO" runat="server" />
+                                </div>
+                            </li>
                         </ul>
+                        <div class="animation start-home"></div>
                     </div>
                 <div class="content-qr">
                     <div class="content-generate-panel">

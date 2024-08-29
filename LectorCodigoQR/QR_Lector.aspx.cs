@@ -96,6 +96,9 @@ namespace LectorCodigoQR
             lblOpcion.Visible = true;
             lkGenerarCodigo.Visible = true;
             lkLeerCodigo.Visible = true;
+
+            pnlUrl.Visible = false;
+            pnlWhatsApp.Visible = false;
         }
 
         protected void lkCopiarUrl_Click(object sender, EventArgs e)
