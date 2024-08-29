@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Web.UI;
 using ZXing;
 using System.Drawing.Imaging;
+using static QRCoder.PayloadGenerator;
 
 namespace LectorCodigoQR
 {
@@ -108,14 +109,19 @@ namespace LectorCodigoQR
             pnlWhatsApp.Visible = false;
 
             txtGenerarUrl.Text = string.Empty;
-            imgQRGenerado.ImageUrl = null;
+            imgQRURL.ImageUrl = null;
+            btnDescargarQR.Visible = false;
         }
 
         protected void btnWhatsAppGenerate_Click(object sender, EventArgs e)
         {
             pnlWhatsApp.Visible = true;
             pnlUrl.Visible = false;
-            btnDescargarQR.Visible = false;
+
+            txtPrefijo.Text = string.Empty;
+            txtNumeroWhatsApp.Text = string.Empty;
+            imgQRWhatsApp.ImageUrl = null;
+            btnDescargarQRWhatsApp.Visible = false;
         }
 
         protected void btnGenerarQR_Click(object sender, EventArgs e)
@@ -128,6 +134,17 @@ namespace LectorCodigoQR
         {
             DescargarQR();
         }
+        protected void btnGenerarQRWhatsApp_Click(object sender, EventArgs e)
+        {
+            GenerarQRWhatsApp();
+            btnDescargarQRWhatsApp.Visible = true;
+        }
+        protected void btnDescargarQRWhatsApp_Click(object sender, EventArgs e)
+        {
+            DescargarQRWhatsApp();
+        }
+
+
 
         #region MÉTODOS
         private void GenerarQR(string name)
@@ -149,8 +166,8 @@ namespace LectorCodigoQR
                 }
             }
 
-            imgQRGenerado.Visible = true;
-            imgQRGenerado.ImageUrl = "~/images/QRImage.png";
+            imgQRURL.Visible = true;
+            imgQRURL.ImageUrl = "~/images/QRImage.png";
 
         }
 
@@ -165,6 +182,49 @@ namespace LectorCodigoQR
             Response.Flush();
             Response.End();
         }
+
+        private void GenerarQRWhatsApp()
+        {
+            string prefix = txtPrefijo.Text;
+            string pathWhatsApp = "https://wa.me/";
+            pathWhatsApp = pathWhatsApp + "+" + prefix + txtNumeroWhatsApp.Text;
+
+            var writer = new BarcodeWriter();
+            writer.Format = BarcodeFormat.QR_CODE;
+            writer.Options = new ZXing.Common.EncodingOptions { Width = 200, Height = 200 };
+            var result = writer.Write(pathWhatsApp);
+            string path = Server.MapPath("~/imagesWpp/QRImageWpp.png");
+            var barcodeBitmap = new Bitmap(result);
+
+            using (MemoryStream memory = new MemoryStream())
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    barcodeBitmap.Save(memory, ImageFormat.Png);
+                    byte[] bytes = memory.ToArray();
+                    fs.Write(bytes, 0, bytes.Length);
+                }
+            }
+
+            imgQRWhatsApp.Visible = true;
+            imgQRWhatsApp.ImageUrl = "~/images/QRImage.png";
+            
+        }
+
+        private void DescargarQRWhatsApp()
+        {
+            string fileName = "QRImageWpp.png";
+            string filePath = Server.MapPath(string.Format("~/imagesWpp/{0}", fileName));
+            Response.ContentType = "application/png";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+
+            Response.WriteFile(filePath);
+            Response.Flush();
+            Response.End();
+        }
+
+
         #endregion
+
     }
 }

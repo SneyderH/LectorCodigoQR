@@ -195,22 +195,13 @@ namespace LectorCodigoQR
         protected global::System.Web.UI.WebControls.Button btnGenerarQR;
 
         /// <summary>
-        /// Control imgQRGenerado.
+        /// Control imgQRURL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgQRGenerado;
-
-        /// <summary>
-        /// Control phQRGenerado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder phQRGenerado;
+        protected global::System.Web.UI.WebControls.Image imgQRURL;
 
         /// <summary>
         /// Control btnDescargarQR.
@@ -229,5 +220,50 @@ namespace LectorCodigoQR
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlWhatsApp;
+
+        /// <summary>
+        /// Control txtPrefijo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPrefijo;
+
+        /// <summary>
+        /// Control txtNumeroWhatsApp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroWhatsApp;
+
+        /// <summary>
+        /// Control btnGenerarQRWhatsApp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGenerarQRWhatsApp;
+
+        /// <summary>
+        /// Control imgQRWhatsApp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgQRWhatsApp;
+
+        /// <summary>
+        /// Control btnDescargarQRWhatsApp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDescargarQRWhatsApp;
     }
 }

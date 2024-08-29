@@ -176,19 +176,17 @@
                         </ul>
                     </div>
                 <div class="content-qr">
-
                     <div class="content-generate-panel">
                         <asp:Panel ID="pnlUrl" runat="server" Visible="false">
                             <h1>GENERAR QR POR URL</h1>
 
                             <div>
-                                <asp:TextBox ID="txtGenerarUrl" runat="server" ForeColor="Black" />
+                                <asp:TextBox ID="txtGenerarUrl" placeholder="Ingrese la dirección URL" runat="server" ForeColor="Black" />
                                 <asp:Button ID="btnGenerarQR" Text="Generar" OnClick="btnGenerarQR_Click" runat="server" />
                             </div>
 
                             <div>
-                                <asp:Image ID="imgQRGenerado" ImageUrl="imageurl" runat="server" />
-                                <asp:PlaceHolder ID="phQRGenerado" runat="server" />
+                                <asp:Image ID="imgQRURL" ImageUrl="imageurl" runat="server" />
                                 <asp:Button ID="btnDescargarQR" Text="Descargar" OnClick="btnDescargarQR_Click" runat="server" Visible="false" />
                             </div>
 
@@ -197,6 +195,18 @@
 
                         <asp:Panel ID="pnlWhatsApp" runat="server" Visible="false">
                             <h1>GENERAR QR POR WHATSAPP</h1>
+
+                            <div>
+                                <asp:TextBox ID="txtPrefijo" runat="server" ForeColor="Black" />
+                                <asp:TextBox ID="txtNumeroWhatsApp" placeholder="Ingrese el número" runat="server" ForeColor="Black" />
+                                <asp:Button ID="btnGenerarQRWhatsApp" Text="Generar" OnClick="btnGenerarQRWhatsApp_Click" runat="server" />
+                            </div>
+
+                            <div>
+                                <asp:Image ID="imgQRWhatsApp" ImageUrl="imageurl" runat="server" />
+                                <asp:Button ID="btnDescargarQRWhatsApp" Text="Descargar" OnClick="btnDescargarQRWhatsApp_Click" runat="server" Visible="false" />
+                            </div>
+
                         </asp:Panel>
                     </div>
 
