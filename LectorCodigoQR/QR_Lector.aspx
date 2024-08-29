@@ -189,7 +189,7 @@
                             <div>
                                 <asp:Image ID="imgQRGenerado" ImageUrl="imageurl" runat="server" />
                                 <asp:PlaceHolder ID="phQRGenerado" runat="server" />
-                                <asp:Button ID="btnDescargarQR" Text="Descargar" OnClick="btnDescargarQR_Click" runat="server" Visible="true" />
+                                <asp:Button ID="btnDescargarQR" Text="Descargar" OnClick="btnDescargarQR_Click" runat="server" Visible="false" />
                             </div>
 
                         </asp:Panel>

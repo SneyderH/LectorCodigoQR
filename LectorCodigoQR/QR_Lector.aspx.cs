@@ -106,17 +106,22 @@ namespace LectorCodigoQR
         {
             pnlUrl.Visible = true;
             pnlWhatsApp.Visible = false;
+
+            txtGenerarUrl.Text = string.Empty;
+            imgQRGenerado.ImageUrl = null;
         }
 
         protected void btnWhatsAppGenerate_Click(object sender, EventArgs e)
         {
             pnlWhatsApp.Visible = true;
             pnlUrl.Visible = false;
+            btnDescargarQR.Visible = false;
         }
 
         protected void btnGenerarQR_Click(object sender, EventArgs e)
         {
             GenerarQR(txtGenerarUrl.Text);
+            btnDescargarQR.Visible = true;
         }
 
         protected void btnDescargarQR_Click(object sender, EventArgs e)
