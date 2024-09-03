@@ -32,6 +32,8 @@ section{
 }
 
 .lightred {
+    display: flex;
+    flex-direction: column;
     background: #31363F;
     -webkit-box-shadow: inset 5px 1px 76px 5px rgba(118,171,174,1);
     -moz-box-shadow: inset 5px 1px 76px 5px rgba(118,171,174,1);
@@ -88,7 +90,6 @@ section{
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
 }
 
 .box-area li {
@@ -158,17 +159,19 @@ section{
 }
 
 .subtitle {
+    display:flex;
+    justify-content: center;
     color: white;
     font-size: 50px;
     font-family: "Anton", sans-serif;
 }
 
 .button-option {
-    position: relative;
     display: flex;
+    padding-top: 50px;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 30px 150px;
+    gap: 20px;
 }
 
 .custom-btn {
@@ -380,10 +383,11 @@ section{
 
 .content-generate-panel {
     display: flex;
+    justify-content: center;
 }
 
-.btn-active:hover:active {
-    width: 100px;
-    background-color: red;
-}
+
+
+/*RESPONSIVE DE LAS PESTAÑAS*/
+
 
