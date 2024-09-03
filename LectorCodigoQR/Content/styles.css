@@ -243,9 +243,11 @@ section{
 }
 
 .container-content {
+    display: flex;
     background-color: #76ABAE;
     border-radius: 50px;
     margin-top: 200px;
+    flex-wrap: wrap;
 }
 
 .back-button {
@@ -257,8 +259,7 @@ section{
 }
 
 .content-qr {
-    display: grid;
-    grid-template-columns: 40% 20% 40%;
+    /*display: flex;*/
 }
 
 .selection-text {
@@ -276,6 +277,7 @@ section{
 }
 
 .picture {
+    display: flex;
     opacity: 0.75;
     height: 250px;
     width: 250px;
