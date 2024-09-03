@@ -248,6 +248,7 @@ section{
     border-radius: 50px;
     margin-top: 200px;
     flex-wrap: wrap;
+    padding: 50px 20px;
 }
 
 .back-button {
