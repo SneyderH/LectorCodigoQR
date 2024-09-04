@@ -164,6 +164,7 @@ section{
     color: white;
     font-size: 50px;
     font-family: "Anton", sans-serif;
+    cursor: default;
 }
 
 .button-option {
@@ -246,7 +247,6 @@ section{
     display: flex;
     background-color: #76ABAE;
     border-radius: 50px;
-    margin-top: 200px;
     flex-wrap: wrap;
     padding: 50px 20px;
 }
@@ -362,9 +362,26 @@ section{
     margin-left: 100px;
 }
 
+.page {
+    margin-top: 200px;
+    display: table;
+    width: 100%;
+}
+
+.container-content {
+    float: left;
+    width: 70%;
+}
+
+aside {
+    background-color: red;
+    float: right;
+    width: 30%;
+}
+
+
 
 /*GENERATE QR CODE*/
-
 .menu-opctions ul {
     display: flex;
     list-style: none;
