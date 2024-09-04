@@ -110,7 +110,7 @@
                         <asp:LinkButton ID="lkVolverLeer" CssClass="btn btn-info custom-btn" OnClick="lkVolverLeer_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
                     </div>
 
-                    <div class="subtitle">
+                    <div class="subtitle-readqr">
                         <asp:Label ID="lblSeleccion" CssClass="selection-text" Text="Selecciona el Código QR" runat="server" Font-Size="23" />
                     </div>
 
@@ -124,19 +124,22 @@
                                 <asp:FileUpload ID="FUImagen" CssClass="file-uploader" runat="server" accept=".png,.jpg,.jpeg,.svg" />
                                 <img id="imgPreview" src="#" alt="Previsualización" style="display: none; width: 100%; height: 100%; object-fit: cover;" />
                             </div>
-                            <div class="col-12 col-md-6 button-image text-center mt-3 mt-md-0">
+
+                            <div class="col button-image text-center">
                                 <asp:Button ID="btnCargarImagen" CssClass="btn custom-btn btn-color-read" Text="Cargar Código" OnClick="btnCargarImagen_Click" runat="server" Style="display: none;" />
                                 <asp:Button ID="btnBorrarImagen" CssClass="btn custom-btn btn-color-delete" Text="Eliminar" runat="server" Style="display: none;" />
                             </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-12 input-group position-grid">
-                                <asp:TextBox ID="txtUrl" CssClass="form-control" runat="server" Visible="false" />
-                                <span class="input-group-btn">
-                                    <asp:LinkButton ID="lkCopiarUrl" CssClass="btn btn-default" OnClick="lkCopiarUrl_Click" OnClientClick="CopyToClipboard()" runat="server" Visible="false">
-                    <i class="fa fa-clone" aria-hidden="true" id="copyIcon" style="color: green;"></i>
-                                    </asp:LinkButton>
-                                </span>
+
+
+                            <div class="col-lg-4 mt-lg-0 mt-md-5 mt-4 ps-lg-4">
+                                <div class="col-12 input-group position-grid">
+                                    <asp:TextBox ID="txtUrl" CssClass="form-control" runat="server" Visible="false" />
+                                    <span class="input-group-btn">
+                                        <asp:LinkButton ID="lkCopiarUrl" CssClass="btn btn-default" OnClick="lkCopiarUrl_Click" OnClientClick="CopyToClipboard()" runat="server" Visible="false">
+                                            <i class="fa fa-clone" aria-hidden="true" id="copyIcon" style="color: green;"></i>
+                                        </asp:LinkButton>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -293,6 +296,13 @@
                     alert(`Copy failed. Error: ${error}`);
                 });
         }
+
+        document.getElementById('<%= FUImagen.ClientID %>').addEventListener('change', function () {
+            if (this.files.length > 0) {
+                document.getElementById('<%= txtUrl.ClientID %>').style.display = 'none';
+                document.getElementById('<%= lkCopiarUrl.ClientID %>').style.display = 'none';
+            }
+        });
     </script>
 
     <script src="Content/styles.css" type="text/javascript"></script>

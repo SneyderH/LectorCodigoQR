@@ -228,6 +228,5 @@ namespace LectorCodigoQR
 
 
         #endregion
-
     }
 }
