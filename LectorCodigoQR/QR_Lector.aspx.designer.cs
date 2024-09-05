@@ -132,6 +132,15 @@ namespace LectorCodigoQR
         protected global::System.Web.UI.WebControls.LinkButton lkCopiarUrl;
 
         /// <summary>
+        /// Control btnSaberMas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaberMas;
+
+        /// <summary>
         /// Control VGenerarCodigo.
         /// </summary>
         /// <remarks>

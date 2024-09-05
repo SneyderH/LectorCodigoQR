@@ -159,8 +159,8 @@ section{
 }
 
 .subtitle {
-    display:flex;
-    justify-content: center;
+    display: flex;
+    text-align: center;
     color: white;
     font-size: 50px;
     font-family: "Anton", sans-serif;
@@ -369,14 +369,20 @@ section{
 }
 
 .container-content {
+    display: flex;
     float: left;
     width: 70%;
 }
 
 aside {
-    background-color: red;
+    display: flex;
+    background-color: #76ABAE;
+    border-radius: 50px;
+    padding-left: 15px;
     float: right;
     width: 30%;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 
@@ -411,4 +417,23 @@ aside {
 
 /*RESPONSIVE DE LAS PESTAÑAS*/
 
+@media screen and (max-width: 425px) {
+    .page {
+        flex-direction: column;
+    }
+
+    .box-area {
+        display: flex;
+    }
+
+    .box-area li {
+        display: flex
+    }
+
+    .text {
+        font-size: 70px;
+        margin: 0px 0px 350px 0px;
+        padding-top: 80px;
+    }
+}
 

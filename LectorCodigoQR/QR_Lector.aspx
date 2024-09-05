@@ -3,6 +3,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <meta name="viewport" http-equiv="Content-Type" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no" charset=utf-8/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -16,6 +17,7 @@
     <link href="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js" rel="Stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="Content/styles.css" type="text/javascript"></script>
     <link href="Content/styles.css" rel="stylesheet" />
 
     <script>
@@ -66,7 +68,7 @@
         }
     </script>
 
-    <div class="container animation-area">
+    <div class="animation-area">
         <div class="text">
             <asp:Label ID="lblTitulo" CssClass="title" Text="Lector de Códigos QR Online" runat="server" /><br />
         </div>
@@ -148,7 +150,9 @@
                 </section>
 
                 <aside>
-                    <h1>HOLA MUNDO!!</h1>
+                    <asp:Label Text="¿No sabes cómo usar el lector de codigo QR?" runat="server" />
+
+                    <asp:Button ID="btnSaberMas" Text="Saber Más" runat="server" />
                 </aside>
             </div>
 
@@ -308,9 +312,9 @@
                 document.getElementById('<%= lkCopiarUrl.ClientID %>').style.display = 'none';
             }
         });
-    </script>
 
-    <script src="Content/styles.css" type="text/javascript"></script>
+
+    </script>
 
 </asp:Content>
 
