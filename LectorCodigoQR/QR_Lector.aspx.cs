@@ -20,12 +20,14 @@ namespace LectorCodigoQR
         {
             MVCodigo.SetActiveView(VLeerCodigo);
             MVCodigo.Visible = true;
+            pnlSeleccion.Visible = false;
         }
 
         protected void lkGenerarCodigo_Click(object sender, EventArgs e)
         {
             MVCodigo.SetActiveView(VGenerarCodigo);
             MVCodigo.Visible = true;
+            pnlSeleccion.Visible = false;
             txtUrl.Text = string.Empty;
         }
 
@@ -88,6 +90,7 @@ namespace LectorCodigoQR
             lkLeerCodigo.Visible = true;
             txtUrl.Visible = false;
             lkCopiarUrl.Visible = false;
+            pnlSeleccion.Visible = true;
         }
 
         protected void lkVolverGenerar_Click(object sender, EventArgs e)
@@ -99,6 +102,7 @@ namespace LectorCodigoQR
 
             pnlUrl.Visible = false;
             pnlWhatsApp.Visible = false;
+            pnlSeleccion.Visible = true;
         }
 
         protected void lkCopiarUrl_Click(object sender, EventArgs e)

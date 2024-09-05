@@ -90,6 +90,7 @@ section{
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .box-area li {
@@ -141,7 +142,7 @@ section{
 }
 
 .box-area li:nth-child(6) {
-    left: 15%;
+    left: 18%;
     width: 110px;
     height: 110px;
     animation-delay: 3.5s;
@@ -245,6 +246,8 @@ section{
 
 .container-content {
     display: flex;
+    float: left;
+    width: 70%;
     background-color: #76ABAE;
     border-radius: 50px;
     flex-wrap: wrap;
@@ -368,12 +371,6 @@ section{
     width: 100%;
 }
 
-.container-content {
-    display: flex;
-    float: left;
-    width: 70%;
-}
-
 aside {
     display: flex;
     background-color: #76ABAE;
@@ -388,6 +385,11 @@ aside {
 
 
 /*GENERATE QR CODE*/
+.menu-opctions {
+    display: flex;
+    width: 100%;
+}
+
 .menu-opctions ul {
     display: flex;
     list-style: none;
@@ -407,16 +409,18 @@ aside {
     border: none;
 }
 
-
-.content-generate-panel {
+.container-generate {
     display: flex;
-    justify-content: center;
+    background-color: #76ABAE;
+    border-radius: 50px;
+    padding: 50px 20px;
 }
 
 
 
-/*RESPONSIVE DE LAS PESTAÑAS*/
 
+
+/*RESPONSIVE DE LAS PESTAÑAS*/
 @media screen and (max-width: 425px) {
     .page {
         flex-direction: column;
