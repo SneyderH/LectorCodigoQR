@@ -276,6 +276,15 @@ namespace LectorCodigoQR
         protected global::System.Web.UI.WebControls.Panel pnlWhatsApp;
 
         /// <summary>
+        /// Control dvGroup.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvGroup;
+
+        /// <summary>
         /// Control txtPrefijo.
         /// </summary>
         /// <remarks>
@@ -292,6 +301,15 @@ namespace LectorCodigoQR
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNumeroWhatsApp;
+
+        /// <summary>
+        /// Control lblMensajeError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensajeError;
 
         /// <summary>
         /// Control btnGenerarQRWhatsApp.
@@ -319,5 +337,14 @@ namespace LectorCodigoQR
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDescargarQRWhatsApp;
+
+        /// <summary>
+        /// Control btnNuevaGeneracionWhatsApp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNuevaGeneracionWhatsApp;
     }
 }

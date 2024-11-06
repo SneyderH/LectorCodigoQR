@@ -502,6 +502,7 @@ ul {
     border: none;
 }
 
+/*PESTAÑA - URL*/
 .container-generate {
     display: flex;
     background-color: #76ABAE;
@@ -539,6 +540,45 @@ ul {
 }
 
 
+/*PESTAÑA - WHATSAPP*/
+.content-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.error-color {
+    color: red;
+}
+
+.content-whatsapp-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.generate-wpp {
+    display: flex;
+    margin-top: 10px;
+}
+
+.generated-qr-wpp {
+    display: flex;
+    margin-top: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.download-qr-wpp {
+    margin-top: 10px;
+}
+
+.btn-generate-wpp {
+    margin-left: 15px;
+}
 /*RESPONSIVE DE LAS PESTAÑAS*/
 @media screen and (max-width: 425px) {
     .page {

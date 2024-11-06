@@ -221,7 +221,7 @@
 
 
                         <asp:Panel ID="pnlUrl" runat="server" Visible="false">
-                            <div class="">
+                            <div>
                                 <center><h1>GENERAR QR POR URL</h1></center>
 
                                 <div class="content-url">
@@ -242,21 +242,39 @@
                         </asp:Panel>
 
 
-                    <asp:Panel ID="pnlWhatsApp" runat="server" Visible="false">
-                        <h1>GENERAR QR POR WHATSAPP</h1>
+                        <asp:Panel ID="pnlWhatsApp" runat="server" Visible="false">
+                            <div>
+                                <center><h1>GENERAR QR POR WHATSAPP</h1></center>
 
-                        <div>
-                            <asp:TextBox ID="txtPrefijo" placeholder="Ingrese el prefijo del país" runat="server" ForeColor="Black" />
-                            <asp:TextBox ID="txtNumeroWhatsApp" placeholder="Ingrese el número" runat="server" ForeColor="Black" />
-                            <asp:Button ID="btnGenerarQRWhatsApp" Text="Generar" OnClick="btnGenerarQRWhatsApp_Click" runat="server" />
-                        </div>
+                                <div class="content-whatsapp">
+                                    <div id="dvGroup" class="input-group" runat="server">
+                                        <div class="input-group-addon">
+                                            <div class="input-group-text">+</div>
+                                        </div>
+                                        <asp:TextBox ID="txtPrefijo" CssClass="form-control" placeholder="EJ: 57" runat="server" ForeColor="Black" Width="80" />
+                                    </div>
 
-                        <div>
-                            <asp:Image ID="imgQRWhatsApp" ImageUrl="imageurl" runat="server" />
-                            <asp:Button ID="btnDescargarQRWhatsApp" Text="Descargar" OnClick="btnDescargarQRWhatsApp_Click" runat="server" Visible="false" />
-                        </div>
+                                    <asp:TextBox ID="txtNumeroWhatsApp" CssClass="form-control text-number-wpp" placeholder="Ingrese el número" runat="server" ForeColor="Black" />
+                                </div>
 
-                    </asp:Panel>
+                                <div class="content-whatsapp-option">
+                                    <asp:Label ID="lblMensajeError" CssClass="error-color" Text="" runat="server" />
+                                    <div class="generate-wpp">
+                                        <asp:Button ID="btnGenerarQRWhatsApp" CssClass="btn btn-success" Text="Generar" OnClick="btnGenerarQRWhatsApp_Click" runat="server" />
+                                    </div>
+                                </div>
+
+                                <div class="generated-qr-wpp">
+                                    <asp:Image ID="imgQRWhatsApp" ImageUrl="imageurl" runat="server" />
+
+                                    <div class="download-qr-wpp">
+                                        <asp:Button ID="btnDescargarQRWhatsApp" CssClass="btn btn-success btn-download-wpp" Text="Descargar" OnClick="btnDescargarQRWhatsApp_Click" runat="server" Visible="false" />
+                                        <asp:Button ID="btnNuevaGeneracionWhatsApp" CssClass="btn btn-info btn-generate-wpp" Text="Generar Nuevo QR" OnClick="btnNuevaGeneracionWhatsApp_Click" runat="server" Visible="false" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </asp:Panel>
                 </div>
             </div>
 

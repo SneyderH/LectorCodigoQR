@@ -133,6 +133,7 @@ namespace LectorCodigoQR
             txtNumeroWhatsApp.Text = string.Empty;
             imgQRWhatsApp.ImageUrl = null;
             btnDescargarQRWhatsApp.Visible = false;
+            btnNuevaGeneracionWhatsApp.Visible = false;
         }
 
         protected void btnGenerarQR_Click(object sender, EventArgs e)
@@ -153,7 +154,21 @@ namespace LectorCodigoQR
         protected void btnGenerarQRWhatsApp_Click(object sender, EventArgs e)
         {
             GenerarQRWhatsApp();
-            btnDescargarQRWhatsApp.Visible = true;
+        }
+
+        protected void btnNuevaGeneracionWhatsApp_Click(object sender, EventArgs e)
+        {
+            txtPrefijo.Text = string.Empty;
+            txtNumeroWhatsApp.Text = string.Empty;
+
+            dvGroup.Visible = true;
+            txtPrefijo.Visible = true;
+            txtNumeroWhatsApp.Visible = true;
+            btnGenerarQRWhatsApp.Visible = true;
+
+            imgQRWhatsApp.Visible = false;
+            btnDescargarQRWhatsApp.Visible = false;
+            btnNuevaGeneracionWhatsApp.Visible = false;
         }
         protected void btnDescargarQRWhatsApp_Click(object sender, EventArgs e)
         {
@@ -211,30 +226,45 @@ namespace LectorCodigoQR
 
         private void GenerarQRWhatsApp()
         {
-            string prefix = txtPrefijo.Text;
-            string pathWhatsApp = "https://wa.me/";
-            pathWhatsApp = pathWhatsApp + "+" + prefix + txtNumeroWhatsApp.Text;
-
-            var writer = new BarcodeWriter();
-            writer.Format = BarcodeFormat.QR_CODE;
-            writer.Options = new ZXing.Common.EncodingOptions { Width = 200, Height = 200 };
-            var result = writer.Write(pathWhatsApp);
-            string path = Server.MapPath("~/imagesWpp/QRImageWpp.png");
-            var barcodeBitmap = new Bitmap(result);
-
-            using (MemoryStream memory = new MemoryStream())
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtPrefijo.Text, "^[0-9 -]*$"))
             {
-                using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
-                {
-                    barcodeBitmap.Save(memory, ImageFormat.Png);
-                    byte[] bytes = memory.ToArray();
-                    fs.Write(bytes, 0, bytes.Length);
-                }
-            }
+                string prefix = txtPrefijo.Text.Replace(" ", "").Trim();
+                string wppNumber = txtNumeroWhatsApp.Text.Replace(" ", "").Trim();
+                string pathWhatsApp = "https://wa.me/";
+                pathWhatsApp = pathWhatsApp + "+" + prefix + wppNumber;
 
-            imgQRWhatsApp.Visible = true;
-            imgQRWhatsApp.ImageUrl = "~/images/QRImage.png";
-            
+                var writer = new BarcodeWriter();
+                writer.Format = BarcodeFormat.QR_CODE;
+                writer.Options = new ZXing.Common.EncodingOptions { Width = 200, Height = 200 };
+                var result = writer.Write(pathWhatsApp);
+                string path = Server.MapPath("~/imagesWpp/QRImageWpp.png");
+                var barcodeBitmap = new Bitmap(result);
+
+                using (MemoryStream memory = new MemoryStream())
+                {
+                    using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        barcodeBitmap.Save(memory, ImageFormat.Png);
+                        byte[] bytes = memory.ToArray();
+                        fs.Write(bytes, 0, bytes.Length);
+                    }
+                }
+
+                lblMensajeError.Visible = false;
+                dvGroup.Visible = false;
+                txtPrefijo.Visible = false;
+                txtNumeroWhatsApp.Visible = false;
+                btnGenerarQRWhatsApp.Visible = false;
+
+                imgQRWhatsApp.Visible = true;
+                btnDescargarQRWhatsApp.Visible = true;
+                btnNuevaGeneracionWhatsApp.Visible = true;
+                imgQRWhatsApp.ImageUrl = "~/images/QRImage.png";
+            }
+            else
+            {
+                lblMensajeError.Text = "Verifique que el prefijo o número de teléfono no contenga ningún caracter especial.";
+            }
         }
 
         private void DescargarQRWhatsApp()
