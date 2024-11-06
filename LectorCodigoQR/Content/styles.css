@@ -47,7 +47,7 @@ section{
 .text {
     color: white;
     text-align: center;
-    margin: 250px 0;
+    margin: 200px 0 250px 0;
     font-size: 100px;
     font-family: "Anton", sans-serif;
 }
@@ -204,6 +204,7 @@ section{
 }
 
 .btn2 {
+    padding-right: 20px;
     background: rgb(255,151,0);
     border: none;
     z-index: 1;
@@ -251,14 +252,20 @@ section{
     background-color: #76ABAE;
     border-radius: 50px;
     flex-wrap: wrap;
-    padding: 50px 20px;
+    padding: 25px 20px;
+    -webkit-box-shadow: inset 0px 0px 61px -8px rgba(49,54,63,1);
+    -moz-box-shadow: inset 0px 0px 61px -8px rgba(49,54,63,1);
+    box-shadow: inset 0px 0px 61px -8px rgba(49,54,63,1);
+}
+
+.back-button-read {
+    margin-left: 10px;
+    margin-bottom: 20px;
 }
 
 .back-button {
-    display: flex;
-    position: relative;
-    justify-content: flex-end;
-    margin-right: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
 }
 
 .content-qr {
@@ -385,21 +392,107 @@ aside {
 
 
 /*GENERATE QR CODE*/
-.menu-opctions {
-    display: flex;
-    width: 100%;
+.btn-8 {
+    background-color: #76ABAE;
+    background-image: linear-gradient(315deg, #76ABAE 0%, #89d8d3 74%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
 }
+
+    .btn-8 span {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .btn-8:before,
+    .btn-8:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        bottom: 0;
+        background: #ffffff;
+        /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+        transition: all 0.3s ease;
+    }
+
+    .btn-8:before {
+        height: 0%;
+        width: 2px;
+    }
+
+    .btn-8:after {
+        width: 0%;
+        height: 2px;
+    }
+
+    .btn-8:hover:before {
+        height: 100%;
+    }
+
+    .btn-8:hover:after {
+        width: 100%;
+    }
+
+    .btn-8:hover {
+        background: transparent;
+    }
+
+    .btn-8 span:hover {
+        color: #ffffff;
+    }
+
+    .btn-8 span:before,
+    .btn-8 span:after {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        background: #ffffff;
+        /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+        transition: all 0.3s ease;
+    }
+
+    .btn-8 span:before {
+        width: 2px;
+        height: 0%;
+    }
+
+    .btn-8 span:after {
+        height: 2px;
+        width: 0%;
+    }
+
+    .btn-8 span:hover:before {
+        height: 100%;
+    }
+
+    .btn-8 span:hover:after {
+        width: 100%;
+    }
 
 .menu-opctions ul {
     display: flex;
     list-style: none;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid;
-    border-top-width: 0px;
+    justify-content: center;
     margin-top: 30px;
-    margin-right: 50px;
-    margin-left: 50px;
+}
+
+ul {
+    text-align: center;
+}
+
+.menu-opctions li {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .btn-reset {
@@ -414,10 +507,36 @@ aside {
     background-color: #76ABAE;
     border-radius: 50px;
     padding: 50px 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    -webkit-box-shadow: inset 0px 0px 70px 13px rgba(49,54,63,1);
+    -moz-box-shadow: inset 0px 0px 70px 13px rgba(49,54,63,1);
+    box-shadow: inset 0px 0px 70px 13px rgba(49,54,63,1);
 }
 
+.content-url {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
 
+.btn-generate-url {
+    margin-left: 15px;
+}
 
+.generated-qr-url {
+    display: flex;
+    margin-top: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.download-qr-url {
+    margin-top: 10px;
+}
 
 
 /*RESPONSIVE DE LAS PESTAÑAS*/

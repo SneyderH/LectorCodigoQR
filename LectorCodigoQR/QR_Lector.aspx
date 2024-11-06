@@ -109,7 +109,7 @@
             <div class="page">
                 <section class="container container-content">
                     <div class="row">
-                        <div class="">
+                        <div class="back-button-read">
                             <asp:LinkButton ID="lkVolverLeer" CssClass="btn btn-info custom-btn" OnClick="lkVolverLeer_Click" runat="server"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Volver</asp:LinkButton>
                         </div>
 
@@ -182,59 +182,64 @@
                     <div class="menu-opctions">
                         <ul>
                             <li>
-                                <div class="btn btn-active" onclick="<%=btnUrlGenerate.ClientID %>.click()">
+                                <div class="custom-btn btn-8" onclick="<%=btnUrlGenerate.ClientID %>.click()">
                                     <i class="fa fa-link" aria-hidden="true"></i>
                                     <asp:Button ID="btnUrlGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="URL" runat="server" OnClick="btnUrlGenerate_Click" />
                                 </div>
                             </li>
 
                             <li>
-                                <div class="btn btn-active" onclick="<%=btnWhatsAppGenerate.ClientID %>.click()">
+                                <div class="custom-btn btn-8" onclick="<%=btnWhatsAppGenerate.ClientID %>.click()">
                                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
                                     <asp:Button ID="btnWhatsAppGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="WHATSAPP" runat="server" OnClick="btnWhatsAppGenerate_Click" />
                                 </div>
                             </li>
 
                             <li>
-                                <div class="btn btn-active" onclick="<%=btnSMSGenerate.ClientID %>.click()">
+                                <div class="custom-btn btn-8" onclick="<%=btnSMSGenerate.ClientID %>.click()">
                                     <i class="fa fa-commenting-o" aria-hidden="true"></i>
                                     <asp:Button ID="btnSMSGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="SMS" runat="server" />
                                 </div>
                             </li>
 
                             <li>
-                                <div class="btn btn-active" onclick="<%=btnTelefonoGenerate.ClientID %>.click()">
+                                <div class="custom-btn btn-8" onclick="<%=btnTelefonoGenerate.ClientID %>.click()">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                     <asp:Button ID="btnTelefonoGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="TELÉFONO" runat="server" />
                                 </div>
                             </li>
 
                             <li>
-                                <div class="btn btn-active" onclick="<%=btnTextoGenerate.ClientID %>.click()">
+                                <div class="custom-btn btn-8" onclick="<%=btnTextoGenerate.ClientID %>.click()">
                                     <i class="fa fa-align-justify" aria-hidden="true"></i>
                                     <asp:Button ID="btnTextoGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="TEXTO" runat="server" />
                                 </div>
                             </li>
                         </ul>
                     </div>
+                    <br />
 
-                    <div class="row">
 
                         <asp:Panel ID="pnlUrl" runat="server" Visible="false">
-                            <h1>GENERAR QR POR URL</h1>
+                            <div class="">
+                                <center><h1>GENERAR QR POR URL</h1></center>
 
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <asp:TextBox ID="txtGenerarUrl" CssClass="form-control" placeholder="Ingrese la dirección URL" runat="server" ForeColor="Black" />
-                                <asp:Button ID="btnGenerarQR" Text="Generar" CssClass="btn btn-success" OnClick="btnGenerarQR_Click" runat="server" />
+                                <div class="content-url">
+                                    <asp:TextBox ID="txtGenerarUrl" CssClass="form-control" placeholder="Ingrese la dirección URL" runat="server" ForeColor="Black" />
+                                    <asp:Button ID="btnGenerarQR" Text="Generar" CssClass="btn btn-success btn-generate-url" OnClick="btnGenerarQR_Click" runat="server" />
+                                </div>
+
+                                <div class="generated-qr-url">
+                                    <asp:Image ID="imgQRURL" ImageUrl="imageurl" CssClass="image-generated-url" runat="server" />
+                                    
+                                    <div class="download-qr-url">
+                                        <asp:Button ID="btnDescargarQR" CssClass="btn btn-success btn-download-url" Text="Descargar" OnClick="btnDescargarQR_Click" runat="server" Visible="false" />
+                                        <asp:Button ID="btnNuevaGeneracion" CssClass="btn btn-info btn-generate-url" Text="Generar Nuevo QR" OnClick="btnNuevaGeneracion_Click" runat="server" Visible="false" />
+                                    </div>
+                                </div>
+
                             </div>
-
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <asp:Image ID="imgQRURL" ImageUrl="imageurl" runat="server" />
-                                <asp:Button ID="btnDescargarQR" Text="Descargar" OnClick="btnDescargarQR_Click" runat="server" Visible="false" />
-                            </div>
-
                         </asp:Panel>
-                    </div>
 
 
                     <asp:Panel ID="pnlWhatsApp" runat="server" Visible="false">

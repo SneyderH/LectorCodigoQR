@@ -115,9 +115,13 @@ namespace LectorCodigoQR
             pnlUrl.Visible = true;
             pnlWhatsApp.Visible = false;
 
+            txtGenerarUrl.Visible = true;
+            btnGenerarQR.Visible = true;
+
             txtGenerarUrl.Text = string.Empty;
             imgQRURL.ImageUrl = null;
             btnDescargarQR.Visible = false;
+            btnNuevaGeneracion.Visible = false;
         }
 
         protected void btnWhatsAppGenerate_Click(object sender, EventArgs e)
@@ -135,6 +139,11 @@ namespace LectorCodigoQR
         {
             GenerarQR(txtGenerarUrl.Text);
             btnDescargarQR.Visible = true;
+            btnNuevaGeneracion.Visible = true;
+
+            btnGenerarQR.Visible = false;
+            txtGenerarUrl.Visible = false;
+            txtGenerarUrl.Text = string.Empty;
         }
 
         protected void btnDescargarQR_Click(object sender, EventArgs e)
@@ -149,6 +158,16 @@ namespace LectorCodigoQR
         protected void btnDescargarQRWhatsApp_Click(object sender, EventArgs e)
         {
             DescargarQRWhatsApp();
+        }
+
+        protected void btnNuevaGeneracion_Click(object sender, EventArgs e)
+        {
+            btnGenerarQR.Visible = true;
+            txtGenerarUrl.Visible = true;
+
+            imgQRURL.Visible = false;
+            btnDescargarQR.Visible = false;
+            btnNuevaGeneracion.Visible = false;
         }
 
 
