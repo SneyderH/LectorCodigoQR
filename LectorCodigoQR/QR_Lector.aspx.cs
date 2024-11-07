@@ -189,6 +189,7 @@ namespace LectorCodigoQR
         #endregion
 
 
+
         #region BOTONES DE LA PESTAÑA URL
         protected void btnGenerarQR_Click(object sender, EventArgs e)
         {
