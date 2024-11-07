@@ -247,7 +247,7 @@ section{
 
 .container-content {
     display: flex;
-    float: left;
+    /*float: left;*/
     width: 70%;
     background-color: #76ABAE;
     border-radius: 50px;
@@ -378,7 +378,7 @@ section{
     width: 100%;
 }
 
-aside {
+/*aside {
     display: flex;
     background-color: #76ABAE;
     border-radius: 50px;
@@ -387,7 +387,7 @@ aside {
     width: 30%;
     flex-direction: column;
     flex-wrap: wrap;
-}
+}*/
 
 
 

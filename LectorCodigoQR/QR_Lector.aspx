@@ -151,11 +151,11 @@
                     <%--</div>--%>
                 </section>
 
-                <aside>
+                <%--<aside>
                     <asp:Label Text="¿No sabes cómo usar el lector de codigo QR?" runat="server" />
 
                     <asp:Button ID="btnSaberMas" Text="Saber Más" runat="server" />
-                </aside>
+                </aside>--%>
             </div>
 
 
