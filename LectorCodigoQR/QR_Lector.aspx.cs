@@ -16,6 +16,7 @@ namespace LectorCodigoQR
             MaintainScrollPositionOnPostBack = true;
         }
 
+        #region ACTIVAR MULTIVIEW DE LECTURA DE CÓDIGO QR
         protected void lkLeerCodigo_Click(object sender, EventArgs e)
         {
             MVCodigo.SetActiveView(VLeerCodigo);
@@ -23,6 +24,9 @@ namespace LectorCodigoQR
             pnlSeleccion.Visible = false;
         }
 
+        #endregion
+
+        #region ACTIVAR MULTIVIEW DE GENERACIÓN DE CÓDIGO QR
         protected void lkGenerarCodigo_Click(object sender, EventArgs e)
         {
             MVCodigo.SetActiveView(VGenerarCodigo);
@@ -30,7 +34,9 @@ namespace LectorCodigoQR
             pnlSeleccion.Visible = false;
             txtUrl.Text = string.Empty;
         }
+        #endregion
 
+        #region MÉTODO PARA CARGAR CÓDIGO QR
         protected void btnCargarImagen_Click(object sender, EventArgs e)
         {
             try
@@ -81,7 +87,9 @@ namespace LectorCodigoQR
                 Console.WriteLine(ex.Message);
             }
         }
+        #endregion
 
+        #region BOTÓN 'VOLVER' DEL PANEL 'LEER QR'
         protected void lkVolverLeer_Click(object sender, EventArgs e)
         {
             MVCodigo.Visible = false;
@@ -92,7 +100,9 @@ namespace LectorCodigoQR
             lkCopiarUrl.Visible = false;
             pnlSeleccion.Visible = true;
         }
+        #endregion
 
+        #region BOTÓN 'VOLVER' DEL PANEL 'GENERAR QR'
         protected void lkVolverGenerar_Click(object sender, EventArgs e)
         {
             MVCodigo.Visible = false;
@@ -104,16 +114,26 @@ namespace LectorCodigoQR
             pnlWhatsApp.Visible = false;
             pnlSeleccion.Visible = true;
         }
+        #endregion
 
+
+
+        #region ACTIVAR ALERTA DE 'COPIADO'
         protected void lkCopiarUrl_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, Page.GetType(), "popupScript", "ModalCopied();", true);
         }
+        #endregion
 
+
+
+        #region BOTONES DEL NAVBAR
+        //URL
         protected void btnUrlGenerate_Click(object sender, EventArgs e)
         {
             pnlUrl.Visible = true;
             pnlWhatsApp.Visible = false;
+            pnlTelefono.Visible = false;
 
             txtGenerarUrl.Visible = true;
             btnGenerarQR.Visible = true;
@@ -124,10 +144,12 @@ namespace LectorCodigoQR
             btnNuevaGeneracion.Visible = false;
         }
 
+        //WHATSAPP
         protected void btnWhatsAppGenerate_Click(object sender, EventArgs e)
         {
             pnlWhatsApp.Visible = true;
             pnlUrl.Visible = false;
+            pnlTelefono.Visible = false;
 
             txtPrefijo.Text = string.Empty;
             txtNumeroWhatsApp.Text = string.Empty;
@@ -136,6 +158,22 @@ namespace LectorCodigoQR
             btnNuevaGeneracionWhatsApp.Visible = false;
         }
 
+        //TELEFONO
+        protected void btnTelefonoGenerate_Click(object sender, EventArgs e)
+        {
+            pnlTelefono.Visible = true;
+            pnlWhatsApp.Visible = false;
+            pnlUrl.Visible = false;
+
+            txtNumeroTelefono.Text = string.Empty;
+            imgQRTelefono.ImageUrl = null;
+            btnDescargarQRTelefono.Visible = false;
+            btnNuevaGeneracionTelefono.Visible = false;
+        }
+        #endregion
+
+
+        #region BOTONES DE LA PESTAÑA URL
         protected void btnGenerarQR_Click(object sender, EventArgs e)
         {
             GenerarQR(txtGenerarUrl.Text);
@@ -145,6 +183,19 @@ namespace LectorCodigoQR
         {
             DescargarQR();
         }
+
+        protected void btnNuevaGeneracion_Click(object sender, EventArgs e)
+        {
+            btnGenerarQR.Visible = true;
+            txtGenerarUrl.Visible = true;
+
+            imgQRURL.Visible = false;
+            btnDescargarQR.Visible = false;
+            btnNuevaGeneracion.Visible = false;
+        }
+        #endregion
+
+        #region BOTONES DE LA PESTAÑA WHATSAPP
         protected void btnGenerarQRWhatsApp_Click(object sender, EventArgs e)
         {
             GenerarQRWhatsApp();
@@ -169,15 +220,32 @@ namespace LectorCodigoQR
             DescargarQRWhatsApp();
         }
 
-        protected void btnNuevaGeneracion_Click(object sender, EventArgs e)
-        {
-            btnGenerarQR.Visible = true;
-            txtGenerarUrl.Visible = true;
+        #endregion
 
-            imgQRURL.Visible = false;
-            btnDescargarQR.Visible = false;
-            btnNuevaGeneracion.Visible = false;
+        #region BOTONES DE LA PESTAÑA TELEFONO
+        protected void btnGenerarQRTelefono_Click(object sender, EventArgs e)
+        {
+            GenerarQRTelefono(txtNumeroTelefono.Text);
         }
+
+        protected void btnDescargarQRTelefono_Click(object sender, EventArgs e)
+        {
+            DescargarQRTelefono();
+        }
+
+        protected void btnNuevaGeneracionTelefono_Click(object sender, EventArgs e)
+        {
+            txtNumeroTelefono.Text = string.Empty;
+
+            txtNumeroTelefono.Visible = true;
+            btnGenerarQRTelefono.Visible = true;
+
+            imgQRTelefono.Visible = false;
+            btnDescargarQRTelefono.Visible = false;
+            btnNuevaGeneracionTelefono.Visible = false;
+        }
+
+        #endregion
 
 
 
@@ -288,6 +356,58 @@ namespace LectorCodigoQR
             Response.End();
         }
 
+
+        private void GenerarQRTelefono(string nTelefono)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtNumeroTelefono.Text, "^[0-9 +-]*$"))
+            {
+                nTelefono = nTelefono.Replace(" ", "").Trim();
+
+                var writer = new BarcodeWriter();
+                writer.Format = BarcodeFormat.QR_CODE;
+                writer.Options = new ZXing.Common.EncodingOptions { Width = 200, Height = 200 };
+                var result = writer.Write(nTelefono);
+                string path = Server.MapPath("~/images/QRImage.png");
+                var barcodeBitmap = new Bitmap(result);
+
+                using (MemoryStream memory = new MemoryStream())
+                {
+                    using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        barcodeBitmap.Save(memory, ImageFormat.Png);
+                        byte[] bytes = memory.ToArray();
+                        fs.Write(bytes, 0, bytes.Length);
+                    }
+                }
+
+                imgQRTelefono.Visible = true;
+                btnDescargarQRTelefono.Visible = true;
+                btnNuevaGeneracionTelefono.Visible = true;
+                imgQRTelefono.ImageUrl = "~/images/QRImage.png";
+
+                lblMensajeErrorTel.Visible = false;
+                btnGenerarQRTelefono.Visible = false;
+                txtNumeroTelefono.Visible = false;
+                txtNumeroTelefono.Text = string.Empty;
+            }
+            else
+            {
+                lblMensajeErrorTel.Text = "Verifique que el número no contenga ningún tipo de letra";
+            }
+            
+        }
+
+        private void DescargarQRTelefono()
+        {
+            string fileName = "QRImageTel.png";
+            string filePath = Server.MapPath(string.Format("~/imagesTel/{0}", fileName));
+            Response.ContentType = "application/png";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+
+            Response.WriteFile(filePath);
+            Response.Flush();
+            Response.End();
+        }
 
         #endregion
     }

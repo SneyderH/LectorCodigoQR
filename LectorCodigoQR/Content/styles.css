@@ -584,6 +584,40 @@ ul {
 .btn-generate-wpp {
     margin-left: 15px;
 }
+
+/*PESTAÑA - TELEFONO*/
+.content-tel {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-tel {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.btn-generate-tel {
+    margin-left: 15px;
+}
+
+.generated-qr-tel {
+    display: flex;
+    margin-top: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.download-qr-tel {
+    margin-top: 10px;
+}
+
+
+
 /*RESPONSIVE DE LAS PESTAÑAS*/
 @media screen and (max-width: 425px) {
     .page {

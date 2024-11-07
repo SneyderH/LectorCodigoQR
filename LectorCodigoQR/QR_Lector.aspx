@@ -195,17 +195,17 @@
                                 </div>
                             </li>
 
-                            <li>
+                            <%--<li>
                                 <div class="custom-btn btn-8" onclick="<%=btnSMSGenerate.ClientID %>.click()">
                                     <i class="fa fa-commenting-o" aria-hidden="true"></i>
                                     <asp:Button ID="btnSMSGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="SMS" runat="server" />
                                 </div>
-                            </li>
+                            </li>--%>
 
                             <li>
                                 <div class="custom-btn btn-8" onclick="<%=btnTelefonoGenerate.ClientID %>.click()">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <asp:Button ID="btnTelefonoGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="TELÉFONO" runat="server" />
+                                    <asp:Button ID="btnTelefonoGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="TELÉFONO" runat="server" OnClick="btnTelefonoGenerate_Click" />
                                 </div>
                             </li>
 
@@ -220,65 +220,98 @@
                     <br />
 
 
-                        <asp:Panel ID="pnlUrl" runat="server" Visible="false">
-                            <div>
-                                <center><h1>GENERAR QR POR URL</h1></center>
+                    <asp:Panel ID="pnlUrl" runat="server" Visible="false">
+                        <div>
+                            <center>
+                                <h1>GENERAR QR POR URL</h1>
+                            </center>
 
-                                <div class="content-url">
-                                    <asp:TextBox ID="txtGenerarUrl" CssClass="form-control" placeholder="Ingrese la dirección URL" runat="server" ForeColor="Black" />
-                                    <asp:Button ID="btnGenerarQR" Text="Generar" CssClass="btn btn-success btn-generate-url" OnClick="btnGenerarQR_Click" runat="server" />
-                                </div>
-
-                                <div class="error-url">
-                                        <asp:Label ID="lblMensajeErrorURL" CssClass="error-color" Text="" runat="server" />
-                                    </div>
-
-                                <div class="generated-qr-url">
-                                    <asp:Image ID="imgQRURL" ImageUrl="imageurl" CssClass="image-generated-url" runat="server" />
-                                    
-                                    <div class="download-qr-url">
-                                        <asp:Button ID="btnDescargarQR" CssClass="btn btn-success btn-download-url" Text="Descargar" OnClick="btnDescargarQR_Click" runat="server" Visible="false" />
-                                        <asp:Button ID="btnNuevaGeneracion" CssClass="btn btn-info btn-generate-url" Text="Generar Nuevo QR" OnClick="btnNuevaGeneracion_Click" runat="server" Visible="false" />
-                                    </div>
-                                </div>
-
+                            <div class="content-url">
+                                <asp:TextBox ID="txtGenerarUrl" CssClass="form-control" placeholder="Ingrese la dirección URL" runat="server" ForeColor="Black" />
+                                <asp:Button ID="btnGenerarQR" Text="Generar" CssClass="btn btn-success btn-generate-url" OnClick="btnGenerarQR_Click" runat="server" />
                             </div>
-                        </asp:Panel>
 
-
-                        <asp:Panel ID="pnlWhatsApp" runat="server" Visible="false">
-                            <div>
-                                <center><h1>GENERAR QR POR WHATSAPP</h1></center>
-
-                                <div class="content-whatsapp">
-                                    <div id="dvGroup" class="input-group" runat="server">
-                                        <div class="input-group-addon">
-                                            <div class="input-group-text">+</div>
-                                        </div>
-                                        <asp:TextBox ID="txtPrefijo" CssClass="form-control" placeholder="EJ: 57" runat="server" ForeColor="Black" Width="80" />
-                                    </div>
-
-                                    <asp:TextBox ID="txtNumeroWhatsApp" CssClass="form-control text-number-wpp" placeholder="Ingrese el número" runat="server" ForeColor="Black" />
-                                </div>
-
-                                <div class="content-whatsapp-option">
-                                    <asp:Label ID="lblMensajeError" CssClass="error-color" Text="" runat="server" />
-                                    <div class="generate-wpp">
-                                        <asp:Button ID="btnGenerarQRWhatsApp" CssClass="btn btn-success" Text="Generar" OnClick="btnGenerarQRWhatsApp_Click" runat="server" />
-                                    </div>
-                                </div>
-
-                                <div class="generated-qr-wpp">
-                                    <asp:Image ID="imgQRWhatsApp" ImageUrl="imageurl" runat="server" />
-
-                                    <div class="download-qr-wpp">
-                                        <asp:Button ID="btnDescargarQRWhatsApp" CssClass="btn btn-success btn-download-wpp" Text="Descargar" OnClick="btnDescargarQRWhatsApp_Click" runat="server" Visible="false" />
-                                        <asp:Button ID="btnNuevaGeneracionWhatsApp" CssClass="btn btn-info btn-generate-wpp" Text="Generar Nuevo QR" OnClick="btnNuevaGeneracionWhatsApp_Click" runat="server" Visible="false" />
-                                    </div>
-                                </div>
-
+                            <div class="error-url">
+                                <asp:Label ID="lblMensajeErrorURL" CssClass="error-color" Text="" runat="server" />
                             </div>
-                        </asp:Panel>
+
+                            <div class="generated-qr-url">
+                                <asp:Image ID="imgQRURL" ImageUrl="imageurl" CssClass="image-generated-url" runat="server" />
+
+                                <div class="download-qr-url">
+                                    <asp:Button ID="btnDescargarQR" CssClass="btn btn-success btn-download-url" Text="Descargar" OnClick="btnDescargarQR_Click" runat="server" Visible="false" />
+                                    <asp:Button ID="btnNuevaGeneracion" CssClass="btn btn-info btn-generate-url" Text="Generar Nuevo QR" OnClick="btnNuevaGeneracion_Click" runat="server" Visible="false" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </asp:Panel>
+
+
+                    <asp:Panel ID="pnlWhatsApp" runat="server" Visible="false">
+                        <div>
+                            <center>
+                                <h1>GENERAR QR POR WHATSAPP</h1>
+                            </center>
+
+                            <div class="content-whatsapp">
+                                <div id="dvGroup" class="input-group" runat="server">
+                                    <div class="input-group-addon">
+                                        <div class="input-group-text">+</div>
+                                    </div>
+                                    <asp:TextBox ID="txtPrefijo" CssClass="form-control" placeholder="EJ: 57" runat="server" ForeColor="Black" Width="80" />
+                                </div>
+
+                                <asp:TextBox ID="txtNumeroWhatsApp" CssClass="form-control text-number-wpp" placeholder="Ingrese el número" runat="server" ForeColor="Black" />
+                            </div>
+
+                            <div class="content-whatsapp-option">
+                                <asp:Label ID="lblMensajeError" CssClass="error-color" Text="" runat="server" />
+                                <div class="generate-wpp">
+                                    <asp:Button ID="btnGenerarQRWhatsApp" CssClass="btn btn-success" Text="Generar" OnClick="btnGenerarQRWhatsApp_Click" runat="server" />
+                                </div>
+                            </div>
+
+                            <div class="generated-qr-wpp">
+                                <asp:Image ID="imgQRWhatsApp" ImageUrl="imageurl" runat="server" />
+
+                                <div class="download-qr-wpp">
+                                    <asp:Button ID="btnDescargarQRWhatsApp" CssClass="btn btn-success btn-download-wpp" Text="Descargar" OnClick="btnDescargarQRWhatsApp_Click" runat="server" Visible="false" />
+                                    <asp:Button ID="btnNuevaGeneracionWhatsApp" CssClass="btn btn-info btn-generate-wpp" Text="Generar Nuevo QR" OnClick="btnNuevaGeneracionWhatsApp_Click" runat="server" Visible="false" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </asp:Panel>
+
+                    <asp:Panel ID="pnlTelefono" runat="server" Visible="false">
+                        <div>
+                            <center>
+                                <h1>GENERAR QR POR TELÉFONO</h1>
+                            </center>
+
+                            <div class="content-tel">
+                                <asp:TextBox ID="txtNumeroTelefono" CssClass="form-control" placeholder="Digite el número de teléfono" runat="server" ForeColor="Black" />
+                                <asp:Button ID="btnGenerarQRTelefono" Text="Generar" CssClass="btn btn-success btn-generate-tel" OnClick="btnGenerarQRTelefono_Click" runat="server" />
+                            </div>
+
+                            <div class="error-tel">
+                                <asp:Label ID="lblMensajeErrorTel" CssClass="error-color" Text="" runat="server" />
+                            </div>
+
+                            <div class="generated-qr-tel">
+                                <asp:Image ID="imgQRTelefono" ImageUrl="imageurl" CssClass="image-generated-tel" runat="server" />
+
+                                <div class="download-qr-tel">
+                                    <asp:Button ID="btnDescargarQRTelefono" CssClass="btn btn-success btn-download-url" Text="Descargar" OnClick="btnDescargarQRTelefono_Click" runat="server" Visible="false" />
+                                    <asp:Button ID="btnNuevaGeneracionTelefono" CssClass="btn btn-info btn-generate-url" Text="Generar Nuevo QR" OnClick="btnNuevaGeneracionTelefono_Click" runat="server" Visible="false" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </asp:Panel>
+
+
                 </div>
             </div>
 
