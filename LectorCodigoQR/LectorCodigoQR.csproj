@@ -253,6 +253,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="imagesTel\" />
+    <Folder Include="imagesTxt\" />
     <Folder Include="imagesWpp\" />
     <Folder Include="images\" />
   </ItemGroup>

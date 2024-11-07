@@ -616,7 +616,40 @@ ul {
     margin-top: 10px;
 }
 
+/*PESTAÑA - TEXTO*/
+.content-txt {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.txa-texto {
+    color: black;
+    width: 900px;
+}
 
+.btn-generate-txt {
+    margin-top: 10px;
+}
+
+.content-text-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.generated-qr-txt {
+    display: flex;
+    margin-top: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.download-qr-txt {
+    margin-top: 10px;
+}
 
 /*RESPONSIVE DE LAS PESTAÑAS*/
 @media screen and (max-width: 425px) {

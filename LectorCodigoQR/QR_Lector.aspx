@@ -212,7 +212,7 @@
                             <li>
                                 <div class="custom-btn btn-8" onclick="<%=btnTextoGenerate.ClientID %>.click()">
                                     <i class="fa fa-align-justify" aria-hidden="true"></i>
-                                    <asp:Button ID="btnTextoGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="TEXTO" runat="server" />
+                                    <asp:Button ID="btnTextoGenerate" ClientIDMode="Static" Font-Bold="true" CssClass="btn-reset" Text="TEXTO" runat="server" OnClick="btnTextoGenerate_Click" />
                                 </div>
                             </li>
                         </ul>
@@ -309,6 +309,32 @@
                             </div>
 
                         </div>
+                    </asp:Panel>
+
+                    <asp:Panel ID="pnlTexto" runat="server" Visible="false">
+                        <div>
+                            <center>
+                                <h1>GENERAR QR POR TEXTO</h1>
+                            </center>
+
+                            <div class="content-txt">
+                                <textarea id="txaTexto" class="form-control txa-texto" placeholder="Escriba su texto" runat="server"></textarea>
+                            </div>
+
+                            <div class="content-text-option">
+                                <asp:Button ID="btnGenerarQRTexto" CssClass="btn btn-success btn-generate-txt" Text="Generar" OnClick="btnGenerarQRTexto_Click" runat="server" />
+                            </div>
+
+                            <div class="generated-qr-txt">
+                                <asp:Image ID="imgQRTexto" ImageUrl="imageurl" CssClass="image-generated-txt" runat="server" />
+
+                                <div class="download-qr-txt">
+                                    <asp:Button ID="btnDescargarQRTexto" CssClass="btn btn-success btn-download-txt" Text="Descargar" OnClick="btnDescargarQRTexto_Click" runat="server" Visible="false" />
+                                    <asp:Button ID="btnNuevaGeneracionTexto" CssClass="btn btn-info btn-generate-txt" Text="Generar Nuevo QR" OnClick="btnNuevaGeneracionTexto_Click" runat="server" Visible="false" />
+                                </div>
+                            </div>
+                        </div>
+
                     </asp:Panel>
 
 

@@ -134,6 +134,7 @@ namespace LectorCodigoQR
             pnlUrl.Visible = true;
             pnlWhatsApp.Visible = false;
             pnlTelefono.Visible = false;
+            pnlTexto.Visible = false;
 
             txtGenerarUrl.Visible = true;
             btnGenerarQR.Visible = true;
@@ -150,6 +151,7 @@ namespace LectorCodigoQR
             pnlWhatsApp.Visible = true;
             pnlUrl.Visible = false;
             pnlTelefono.Visible = false;
+            pnlTexto.Visible = false;
 
             txtPrefijo.Text = string.Empty;
             txtNumeroWhatsApp.Text = string.Empty;
@@ -164,11 +166,25 @@ namespace LectorCodigoQR
             pnlTelefono.Visible = true;
             pnlWhatsApp.Visible = false;
             pnlUrl.Visible = false;
+            pnlTexto.Visible = false;
 
             txtNumeroTelefono.Text = string.Empty;
             imgQRTelefono.ImageUrl = null;
             btnDescargarQRTelefono.Visible = false;
             btnNuevaGeneracionTelefono.Visible = false;
+        }
+
+        protected void btnTextoGenerate_Click(object sender, EventArgs e)
+        {
+            pnlTexto.Visible = true;
+            pnlTelefono.Visible = false;
+            pnlWhatsApp.Visible = false;
+            pnlUrl.Visible = false;
+
+            txaTexto.Value = string.Empty;
+            imgQRTexto.ImageUrl = null;
+            btnDescargarQRTexto.Visible = false;
+            btnNuevaGeneracionTexto.Visible = false;
         }
         #endregion
 
@@ -247,7 +263,31 @@ namespace LectorCodigoQR
 
         #endregion
 
+        #region BOTONES DE LA PESTAÑA TEXTO
+        protected void btnGenerarQRTexto_Click(object sender, EventArgs e)
+        {
+            GenerarQRTexto(txaTexto.Value);
+        }
 
+        protected void btnDescargarQRTexto_Click(object sender, EventArgs e)
+        {
+            DescargarQRTexto();
+        }
+
+        protected void btnNuevaGeneracionTexto_Click(object sender, EventArgs e)
+        {
+            txaTexto.Value = string.Empty;
+
+            txaTexto.Visible = true;
+            btnGenerarQRTexto.Visible = true;
+
+            imgQRTexto.Visible = false;
+            btnDescargarQRTexto.Visible = false;
+            btnNuevaGeneracionTexto.Visible = false;
+        }
+
+
+        #endregion
 
         #region MÉTODOS
         private void GenerarQR(string name)
@@ -367,7 +407,7 @@ namespace LectorCodigoQR
                 writer.Format = BarcodeFormat.QR_CODE;
                 writer.Options = new ZXing.Common.EncodingOptions { Width = 200, Height = 200 };
                 var result = writer.Write(nTelefono);
-                string path = Server.MapPath("~/images/QRImage.png");
+                string path = Server.MapPath("~/imagesTel/QRImageTel.png");
                 var barcodeBitmap = new Bitmap(result);
 
                 using (MemoryStream memory = new MemoryStream())
@@ -409,6 +449,48 @@ namespace LectorCodigoQR
             Response.End();
         }
 
+        private void GenerarQRTexto(string texto)
+        {
+            var writer = new BarcodeWriter();
+            writer.Format = BarcodeFormat.QR_CODE;
+            writer.Options = new ZXing.Common.EncodingOptions { Width = 200, Height = 200 };
+            var result = writer.Write(texto);
+            string path = Server.MapPath("~/imagesTxt/QRImageTxt.png");
+            var barcodeBitmap = new Bitmap(result);
+
+            using (MemoryStream memory = new MemoryStream())
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    barcodeBitmap.Save(memory, ImageFormat.Png);
+                    byte[] bytes = memory.ToArray();
+                    fs.Write(bytes, 0, bytes.Length);
+                }
+            }
+
+            imgQRTexto.Visible = true;
+            btnDescargarQRTexto.Visible = true;
+            btnNuevaGeneracionTexto.Visible = true;
+            imgQRTexto.ImageUrl = "~/images/QRImage.png";
+
+            btnGenerarQRTexto.Visible = false;
+            txaTexto.Visible = false;
+            txaTexto.Value = string.Empty;
+        }
+
+        private void DescargarQRTexto()
+        {
+            string fileName = "QRImageTxt.png";
+            string filePath = Server.MapPath(string.Format("~/imagesTxt/{0}", fileName));
+            Response.ContentType = "application/png";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+
+            Response.WriteFile(filePath);
+            Response.Flush();
+            Response.End();
+        }
+
         #endregion
+
     }
 }
