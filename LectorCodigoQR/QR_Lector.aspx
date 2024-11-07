@@ -229,6 +229,10 @@
                                     <asp:Button ID="btnGenerarQR" Text="Generar" CssClass="btn btn-success btn-generate-url" OnClick="btnGenerarQR_Click" runat="server" />
                                 </div>
 
+                                <div class="error-url">
+                                        <asp:Label ID="lblMensajeErrorURL" CssClass="error-color" Text="" runat="server" />
+                                    </div>
+
                                 <div class="generated-qr-url">
                                     <asp:Image ID="imgQRURL" ImageUrl="imageurl" CssClass="image-generated-url" runat="server" />
                                     

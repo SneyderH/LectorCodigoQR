@@ -139,12 +139,6 @@ namespace LectorCodigoQR
         protected void btnGenerarQR_Click(object sender, EventArgs e)
         {
             GenerarQR(txtGenerarUrl.Text);
-            btnDescargarQR.Visible = true;
-            btnNuevaGeneracion.Visible = true;
-
-            btnGenerarQR.Visible = false;
-            txtGenerarUrl.Visible = false;
-            txtGenerarUrl.Text = string.Empty;
         }
 
         protected void btnDescargarQR_Click(object sender, EventArgs e)
@@ -190,26 +184,40 @@ namespace LectorCodigoQR
         #region MÉTODOS
         private void GenerarQR(string name)
         {
-            var writer = new BarcodeWriter();
-            writer.Format = BarcodeFormat.QR_CODE;
-            writer.Options = new ZXing.Common.EncodingOptions { Width=200, Height=200 };
-            var result = writer.Write(name);
-            string path = Server.MapPath("~/images/QRImage.png");
-            var barcodeBitmap = new Bitmap(result);
-
-            using (MemoryStream memory = new MemoryStream())
+            if (name.Contains("https://"))
             {
-                using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                var writer = new BarcodeWriter();
+                writer.Format = BarcodeFormat.QR_CODE;
+                writer.Options = new ZXing.Common.EncodingOptions { Width=200, Height=200 };
+                var result = writer.Write(name);
+                string path = Server.MapPath("~/images/QRImage.png");
+                var barcodeBitmap = new Bitmap(result);
+
+                using (MemoryStream memory = new MemoryStream())
                 {
-                    barcodeBitmap.Save(memory, ImageFormat.Png);
-                    byte[] bytes = memory.ToArray();
-                    fs.Write(bytes, 0, bytes.Length);
+                    using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        barcodeBitmap.Save(memory, ImageFormat.Png);
+                        byte[] bytes = memory.ToArray();
+                        fs.Write(bytes, 0, bytes.Length);
+                    }
                 }
+
+                imgQRURL.Visible = true;
+                btnDescargarQR.Visible = true;
+                btnNuevaGeneracion.Visible = true;
+                imgQRURL.ImageUrl = "~/images/QRImage.png";
+
+                lblMensajeErrorURL.Visible = false;
+                btnGenerarQR.Visible = false;
+                txtGenerarUrl.Visible = false;
+                txtGenerarUrl.Text = string.Empty;
             }
-
-            imgQRURL.Visible = true;
-            imgQRURL.ImageUrl = "~/images/QRImage.png";
-
+            else
+            {
+                lblMensajeErrorURL.Visible = true;
+                lblMensajeErrorURL.Text = "Verifique que la dirección URL contenga (https://).";
+            }
         }
 
         private void DescargarQR()
@@ -263,6 +271,7 @@ namespace LectorCodigoQR
             }
             else
             {
+                lblMensajeError.Visible = true;
                 lblMensajeError.Text = "Verifique que el prefijo o número de teléfono no contenga ningún caracter especial.";
             }
         }

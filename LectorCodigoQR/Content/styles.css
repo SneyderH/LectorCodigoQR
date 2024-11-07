@@ -539,6 +539,11 @@ ul {
     margin-top: 10px;
 }
 
+.error-url {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
 
 /*PESTAÑA - WHATSAPP*/
 .content-whatsapp {
